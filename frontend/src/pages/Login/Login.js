@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link, useNavigate, useLocation, Outlet } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
+import Landing from "../home/Landing";
+import Spinner from "../../components/Spinner";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,6 +13,9 @@ const Login = () => {
   const location = useLocation();
 
 
+  const loadin = ()=>{
+    document.getElementById('loading').innerHTML=<Spinner />;
+  };
   // form function
   const handleSubmit = async (e) => {
     // console.log("hjggjgjgj")
@@ -92,7 +97,8 @@ const Login = () => {
               </div>
               <div className="text-center mt-10">
                 <button type="submit"
-                  className="uppercase px-24 md:px-[118px] lg:px-[140px] py-2 rounded-md text-white bg-gradient-to-b from-violet-700 via-violet-600 to-violet-700 hover:brightness-105  font-medium ">login</button>
+                  className="uppercase px-24 md:px-[118px] lg:px-[140px] py-2 rounded-md text-white bg-gradient-to-b from-violet-700 via-violet-600 to-violet-700 hover:brightness-105  font-medium " onClick={loadin
+                  }><span id="loading">login</span></button>
               </div>
               <div className="text-center my-6">
                 <button className="text-sm font-medium text-gray-200 hover:text-white hover:underline underline-offset-4"><Link to={"/ForgetPassword"}>Forgot your
