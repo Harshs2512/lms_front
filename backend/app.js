@@ -1,12 +1,14 @@
 const express = require("express");
 require("dotenv").config();
 require("./db");
-const user = require("./routes/userRoute");
+const userRoute = require("./routes/userRoute");
 const app = express();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const courseRoute = require("./routes/courseRoute");
 const adminRoute = require("./routes/adminRoute");
+const enrollRoute = require("./routes/enrollRoute");
+const commonRoute = require("./routes/commonRoute");
 const cors = require('cors');
 
 
@@ -19,9 +21,11 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const errorMiddleware = require("./middleware/error");
-app.use("/api/v1", user);
+app.use("/api/v1", userRoute);
 app.use("/api/v1", courseRoute);
 app.use("/api/v1", adminRoute);
+app.use("/api/v1", enrollRoute);
+app.use("/api/v1", commonRoute);
 
 
 // Middleware for Error

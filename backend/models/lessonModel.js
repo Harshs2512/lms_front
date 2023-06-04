@@ -7,7 +7,7 @@ const lessonSchema = mongoose.Schema({
     },
     discreption: {
         type: String,
-        required: [true, "Please Enter discreption"]
+        required: [true, "Please Enter Category"]
     },
     courseId: {
         type: mongoose.Schema.Types.ObjectId,

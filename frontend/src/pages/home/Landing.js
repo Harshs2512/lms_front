@@ -7,6 +7,7 @@ import Bgs from './Bgs';
 import Top from './Top';
 import Bg from './Bg';
 import Wave from './Wave';
+import Footer from '../../components/Footer';
 
 export default function Landing() {
   // const dispatch = useDispatch();
@@ -15,14 +16,16 @@ export default function Landing() {
   // },[dispatch] )
   return (
     <div>
-<Lorem/>
-<Car/>
-<Blog/>
-<Team/>
-<Bgs/>
-<Top/>
-<Bg/>
-<Wave/>
+      <Lorem />
+      <Car />
+      <Blog />
+      <Team />
+      <Bgs />
+      <Top />
+      <Bg />
+      <Wave />
+      <Footer />
+
     </div>
   )
 }

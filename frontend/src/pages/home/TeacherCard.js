@@ -5,6 +5,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 export default function TeacherCard() {
+  
   return (
     <>
      <div className="w-full    flex justify-center py-16  bg-[url('https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')]">

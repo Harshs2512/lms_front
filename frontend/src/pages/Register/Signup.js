@@ -17,98 +17,117 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const res = await axios.post("http://localhost:8000/api/v1/register", {
-            name,
-            email,
-            password
-          });
-          if (res && res.data.success) {
-            toast.success(res.data && res.data.message);
-            navigate("/login");
-          } else {
-            toast.error(res.data.message);
-          }
+            const res = await axios.post("http://localhost:8000/api/v1/register", {
+                name,
+                email,
+                password
+            });
+            if (res && res.data.success) {
+                toast.success(res.data && res.data.message);
+                navigate("/login");
+            } else {
+                toast.error(res.data.message);
+            }
         } catch (error) {
-          console.log(error);
-          toast.error("Something went wrong");
+            console.log(error);
+            toast.error("Something went wrong");
         }
-      };
+    };
     return (
-        <div className="flex justify-center  py-10">
-            <div className="mt-10">
-                <h1 className="text-center text-4xl text-blue-900 font-bold">welcome to<span className="text-orange-500"> cybrom</span>  </h1>
-                <img src="login.jpg" />
-            </div>
-            <form name="myfname" onSubmit={handleSubmit} id="demo" className='mt-16'>
-                <Outlet />
-                <div class="flex  justify-center w-full bg-blue-800 m-4">
-                    <div class="h-[9%] w-full mt-4">
-                        <div class="mb-6 text-white">
-                            <a href="#" class="flex justify-end mr-8 space-x-2 hover:underline underline-offset-4">
-                                <Link to="/Login">LOGIN</Link>
-                                <i class="fa-solid fa-arrow-right-long mt-[6px]"></i>
-                            </a>
+        <>
+            <div className=" ">
+                <div className="flex justify-center  ">
+                    <div className="block md:flex  justify-center h-[32rem] w-[60rem] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.8)] md:mt-32 mt-10 bg-white py-5">
+                        <div className="mt-6">
+                            <h1 className=" text-center text-4xl tracking-widest text-blue-900 font-bold ">
+                                Welcome to <span className="text-red-900">Cybrom</span>
+                            </h1>
+                            <img src="login.jpg" className="hidden sm:block ml-8 md:ml-0 w-80 md:w-96 md:mt-5" alt="" />
+                        </div>
+                        <form
+                            name="myfname"
+                            onSubmit={handleSubmit}
+                            id="demo"
+                            className="ml-0 md:ml-6"
+                            method="post"
+                        >
+                            <Outlet />
+                            <div className="flex justify-center  shadow w-full md:w-96 ">
+                                <div className="h-[29rem] bg-white w-96 md:w-80 p-8 md:p-0  ">
+                                    <div className="  space-y-2">
+                                        <div className="flex-col justify-center items-center ">
+                                            <h2
+                                                class="text-center text-4xl text-indigo-900 font-display font-semibold  xl:text-5xl
+                    xl:text-bold"
+                                            >
+                                                Sign Up
+                                            </h2>
+                                        </div>
+                                        <div className="text-right pt-3">
+                                            Don't have an account ?{" "}
+                                            <Link
+                                                to="/Signup"
+                                                className="hover:underline text-gray-900 hover:text-blue-600"
+                                            >
+                                                Signup
+                                            </Link>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col justify-center  mt-0 space-y-2 ">
+                                        <div class="text-sm text-left font-bold text-gray-700 tracking-wide mt-8 ">
+                                            Enter Name
+                                        </div>
+                                        <input
+                                            type="name"
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
+                                            id="exampleInputEmail1"
+                                            placeholder="Enter Your Name"
+                                            required
+                                            className="w-full text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
+                                        />
+                                        <div class="text-sm text-left font-bold text-gray-700 tracking-wide md:mt-10]">
+                                            Email Address
+                                        </div>
+                                        <input
+                                            type="email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            id="exampleInputEmail1"
+                                            placeholder="Enter Your Email "
+                                            required
+                                            className="w-full text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white"
+                                        />
 
-                        </div>
-                        <div class=" flex flex-col justify-center items-center space-y-2">
-                            <div>
-                                <h1 class="text-xl font-semibold text-white">Sign Up</h1>
+                                        <div class="text-sm text-left font-bold text-gray-700 tracking-wide pt-11">
+                                            Password
+                                        </div>
+                                        <input
+                                            type="password"
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                            className="w-full text-lg py-2 bg-white border-b border-black focus:outline-none focus:border-indigo-500"
+                                            id="exampleInputPassword1"
+                                            placeholder="Enter Your Password"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="text-center mt-10">
+                                        <button
+                                            type="submit"
+                                            className="uppercase px-24 md:px-[118px] lg:px-[140px] py-2 rounded-md  font-bold  text-white  hover:brightness-105  bg-gray-900 "
+                                        // onClick={loadin}
+                                        >
+                                            <span id="loading">SingUp</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <h1 class="text-sm font-semibold text-gray-200">Let's join us :</h1>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col justify-center items-center mt-7 space-y-6 md:space-y-8">
-                            <div class="space-y-2">
-                                <h1 class="text-base text-gray-200">Name</h1>
-                                <input
-                                    type="name"
-                                    autoFocus
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    id="exampleInputEmail1"
-                                    placeholder="Enter Your Email "
-                                    required
-                                    className="  rounded-md px-5 py-2 bg-gray-300 text-gray-600 focus:outline-none font-semibold md:w-72 lg:w-[340px]" />
-                            </div>
-                            <div class="space-y-2">
-                                <h1 class="text-base text-gray-200">Email</h1>
-                                <input
-                                    type="email"
-                                    autoFocus
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    id="exampleInputEmail1"
-                                    placeholder="Enter Your Email "
-                                    required
-                                    className="  rounded-md px-5 py-2 bg-gray-300 text-gray-600 focus:outline-none font-semibold md:w-72 lg:w-[340px]" />
-                            </div>
-                            <div class="space-y-2">
-                                <h1 class="text-base text-gray-200">Password</h1>
-                                <input
-                                    type="password"
-                                    autoFocus
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    id="exampleInputEmail1"
-                                    placeholder="Enter Your Email "
-                                    required
-                                    className="  rounded-md px-5 py-2 bg-gray-300 text-gray-600 focus:outline-none font-semibold md:w-72 lg:w-[340px]" />
-                            </div>
-                        </div>
-                        <div class="text-center mt-10">
-                            <button type="submit"
-                                class="uppercase px-24 md:px-[118px] lg:px-[140px] py-2 rounded-md text-white bg-gradient-to-b from-violet-700 via-violet-600 to-violet-700 hover:brightness-105  font-medium ">Sign Up</button>
-                        </div>
-                        <div class="text-center my-6">
-                            <a href="#" class="text-sm font-medium text-gray-200 hover:text-white hover:underline underline-offset-4">Forgot your
-                                Password ?</a>
-                        </div>
+                        </form>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </>
     )
 }
 

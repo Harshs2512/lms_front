@@ -1,7 +1,7 @@
 const ErrorHander = require("../utils/errorhander");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const User = require("../models/userModel");
-//const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken")
 //const bcrypt = require("bcrypt");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
@@ -175,11 +175,68 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
 
 // update User Profile
 exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
+    try {
+        const { name, email } = req.body;
+        const user = await User.findById(req.user._id);
+        const updatedUser = await User.findByIdAndUpdate(
+            req.user._id,
+            {
+                name: name || user.name,
+                email: email || user.email,
+            },
+            { new: true }
+        );
+        res.status(200).send({
+            success: true,
+            message: "Profile Updated SUccessfully",
+            updatedUser,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(400).send({
+            success: false,
+            message: "Error WHile Update profile",
+            error,
+        });
+    }
+});
+
+
+// Get all users(admin)
+exports.getAllUser = catchAsyncErrors(async (req, res, next) => {
+    const users = await User.find();
+
+    res.status(200).json({
+        success: true,
+        users,
+    });
+});
+
+// Get single user (admin)
+exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+        return next(
+            new ErrorHander(`User does not exist with Id: ${req.params.id}`)
+        );
+    }
+
+    res.status(200).json({
+        success: true,
+        user,
+    });
+});
+
+// update User Role -- Admin
+exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
     const newUserData = {
         name: req.body.name,
         email: req.body.email,
+        role: req.body.role,
     };
-    const user = await User.findByIdAndUpdate({_id: req.params.id }, newUserData, {
+
+    await User.findByIdAndUpdate(req.params.id, newUserData, {
         new: true,
         runValidators: true,
         useFindAndModify: false,
@@ -189,3 +246,66 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
         success: true,
     });
 });
+
+
+// Delete User --Admin
+exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+        return next(
+            new ErrorHander(`User does not exist with Id: ${req.params.id}`, 400)
+        );
+    }
+    await user.deleteOne();
+    res.status(200).json({
+        success: true,
+        message: "User Deleted Successfully",
+    });
+});
+
+
+exports.checkUser = async (req, res, next) => {
+    const tokenFind = () => {
+        try {
+            // check if token found in cookies
+            if (req.cookies.token) {
+                return req.cookies.token;
+            }
+            // check if token found body
+            if (req.body.token) {
+                return req.body.token;
+            }
+            //check if token found in header
+            if (req.header("Authorization")) {
+                return req.header("Authorization").replace("Bearer ", "");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const token = tokenFind();
+
+    if (token) {
+        // decoding the token with scerect key
+        //   const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        //   // asign to a var
+        //   const found = await User.findById(decoded.id);
+
+        //   if (found) {
+        //     return res.status(200).redirect("/dashboard");
+        //   } else {
+        res.status(200).json({
+            success: true,
+            token: true
+        });
+    }
+    else {
+        res.status(500).json({
+            success: false,
+            token: false
+        });
+    }
+    next();
+};

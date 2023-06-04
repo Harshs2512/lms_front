@@ -25,7 +25,7 @@ const router = express.Router();
 router.route("/course/new").post(isAuthenticatedUser, authorizeRoles("admin"), createCourse);
 router.route("/courses").get(getAllCourses);
 router.route("/course/:id").put(isAuthenticatedUser, authorizeRoles("admin"), updateCourse).delete(isAuthenticatedUser, authorizeRoles("admin"), deleteCourse).get(getCourseDetails);
-router.route("/Showcourse/ByCate_id/:id").get(isAuthenticatedUser, authorizeRoles("admin"), getAllCoursesByCat_id);
+router.route("/Showcourse/ByCate_id/:id").get(getAllCoursesByCat_id);
 
 
 //For add category CRUD operation

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { Link, useNavigate, useLocation, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import { useAuth } from "../../context/auth";
 
 const ForgetPassword = () => {
     const [email, setEmail] = useState("");
-    // const user = "yes";
     const Forgetpassword = async (e) => {
+        toast.success("Email send");
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:8000/api/v1/password/forgot/", {
+            await axios.post("http://localhost:8000/api/v1/password/forgot/", {
                 email
             });
             toast.info("Check your Email!", {
@@ -26,19 +26,58 @@ const ForgetPassword = () => {
     };
     return (
         <>
-            <h1>Forget_password</h1>
-            <div className='flex justify-center bg-slate-400 p-40'>
-                <div>
-                    <form>
-                        <input type="email"
-                            autoFocus
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)} className="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={Forgetpassword}>Register new account</button>
-                    </form>
+            <div className=" ">
+                <div className="flex justify-center  ">
+                    <div className="block md:flex  justify-center shadow-[0_35px_60px_-15px_rgba(0,0,0,0.8)] md:mt-32 mt-10 bg-white p-10">
+                        <form
+                            name="myfname"
+                            onSubmit={Forgetpassword}
+                            id="demo"
+                            className="ml-0"
+                            method="post"
+                        >
+                            <Outlet />
+                            <div className="flex justify-center  shadow w-full md:w-96 md:py-10">
+                                <div className="bg-white w-96 md:w-80 p-8 md:p-0  ">
+                                    <div className="  space-y-2">
+                                        <div className="flex-col justify-center items-center ">
+                                            <h2
+                                                class="text-center text-4xl text-indigo-900 font-display font-semibold  xl:text-3xl xl:text-bold"
+                                            >
+                                                Reset Your Password
+                                            </h2>
+                                        </div>
+
+                                    </div>
+                                    <div className="flex flex-col justify-center  mt-0 space-y-2 ">
+                                        <div class="text-sm text-left font-bold text-gray-700 tracking-wide mt-8">
+                                            Email Address
+                                        </div>
+                                        <input
+                                            type="email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            id="exampleInputEmail1"
+                                            placeholder="Enter Your Email "
+                                            required
+                                            className="w-full text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white"
+                                        />
+                                    </div>
+                                    <div className="text-center mt-10">
+                                        <button
+                                            type="submit"
+                                            className="uppercase px-24 md:px-[118px] lg:px-[140px] py-2 rounded-md  font-bold  text-white  hover:brightness-105  bg-gray-900 "
+                                        >
+                                            <span id="loading">Reset</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+                <ToastContainer />
             </div>
-            <ToastContainer />
         </>
     );
 };

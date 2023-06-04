@@ -240,7 +240,6 @@ exports.updateCategory = catchAsyncErrors(async (req, res) => {
             }
         } else {
             const category = await Category.findByIdAndUpdate(req.params.id, req.body, {
-                new: true,
                 runValidators: true,
                 useFindAndModify: false,
             });

@@ -6,7 +6,7 @@ import TeacherCard from "./pages/home/TeacherCard"
 import LandingPage from "./pages/home/Landing"
 import Login from "./pages/Login/Login"
 import SingUp from "./pages/Register/Signup"
-import Dashboard from "./pages/Dashboard/Dashboard"
+// import Dashboard from "./pages/Dashboard/Dashboard"
 // import Landing from './home/Landing';
 import {
   BrowserRouter as Router,
@@ -18,6 +18,15 @@ import TestPage from './pages/test/test';
 import PrivateRoute from './components/Routes/Private';
 import ForgetPassword from './pages/Login/ForgetPassword';
 import ConfirmPassword from './pages/Login/ConfirmPassword';
+import DashBoard from './pages/user/Course/Dashboard/Dashboard';
+import Mycourse from './pages/user/Course/Mycourse/Mycourse';
+import Purchase from './pages/user/Course/Purchase/Purchase';
+import Profile from './pages/user/Course/Profile/Profile';
+import Profileupdate from './pages/user/Course/Profile/Profileupdate';
+import PurchaseByCategory from './pages/user/Course/Purchase/PurchaseByCategory';
+import Reg from './components/Reg';
+// import Profileupdate from './pages/user/Course/Profile/Profileupdate';
+
 // import { useDispatch } from "react-redux";
 
 
@@ -31,15 +40,23 @@ const Routing = () => {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />}>  </Route>
+      <Route path="/reg" element={<Reg />}>  </Route>
       <Route path="/library" element={<TeacherCard />}>  </Route>
       <Route path="/login" element={<Login />}>  </Route>
       <Route path="/ForgetPassword" element={<ForgetPassword />}>  </Route>
       <Route path="/ConfirmPassword/:token" element={<ConfirmPassword />}>  </Route>
       <Route path="/SignUp" element={<SingUp />}>  </Route>
       <Route path="/TestPage" element={<TestPage />}>  </Route>
-      <Route path="/dashboard" element={<PrivateRoute />}>
-        <Route path="" element={<Dashboard />}>  </Route>
+      <Route path="/dashboard/*" element={<PrivateRoute />}>
+        <Route path="" element={<DashBoard />} />
+        <Route path="Mycourse" element={<Mycourse />} />
+        <Route path="Purchase" element={<Purchase />} />
+        <Route path="category" element={<PurchaseByCategory />} />
       </Route>
+      <Route path="/Profile" element={<Profile />} />
+      <Route path="/ProfileUpdate" element={<Profileupdate />} />
+      {/* <Route path="/category" element={<TestPage />} /> */}
+
       {/*
       <Route path="/ucam" element={<Ucam />}>  </Route>
       <Route path="/teacher-dashboard" element={<TeacherDashboard />}>  </Route>
@@ -74,7 +91,6 @@ function App() {
       <Router>
         <Header />
         <Routing />
-        <Footer />
       </Router>
     </div>
   );

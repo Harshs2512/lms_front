@@ -4,8 +4,7 @@ import { Outlet } from "react-router-dom";
 import axios from "axios";
 import Loading from "../Loading";
 import Landing from "../../pages/home/Landing";
-import Car from "../../pages/home/Car"
-import Dashboard from "../../pages/Dashboard/Dashboard";
+import UserDashBoard from "../../pages/user/UserDashBoard";
 
 
 export default function PrivateRoute() {
@@ -14,12 +13,9 @@ export default function PrivateRoute() {
 
     useEffect(() => {
         const authCheck = async () => {
-            console.log("bhghghghghhfhghg")
-
             const res = await axios.get("http://localhost:8000/api/v1/user");
             console.log(res)
-            console.log("bhghghghghhfhghg")
-            if (res.data.ok) {
+            if (res.data.token) {
                 setOk(true);
             } else {
                 setOk(false);
@@ -28,5 +24,5 @@ export default function PrivateRoute() {
         if (auth?.token) authCheck();
     }, [auth?.token]);
 
-    return ok ? <Dashboard /> :<Landing />;
+    return ok ? <UserDashBoard /> :<Landing />;
 }
