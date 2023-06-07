@@ -112,7 +112,7 @@ const PurchaseByCategory = () => {
     //         setIsLoading(false);
     //     }, 1000)
     // });
-    isLoading(false)
+    // setIsLoading(false)
 
     
     const [result, setResult] = useState([]);
@@ -124,6 +124,8 @@ const PurchaseByCategory = () => {
             const { data } = await axios.get(`http://localhost:8000/api/v1/Showcourse/ByCate_id/${params.id}`);
             // setIsLoading(false);
             setResult(data.result);
+            // setIsLoading(false);
+            
             
             console.log(data.result)
             // console.log(data)
@@ -134,7 +136,12 @@ const PurchaseByCategory = () => {
     };
     useEffect(() => {
         getAllCourseByCategory();
-    })
+    },[])
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 1000)
+    });
     return (
         <>
             {isLoading === false &&
