@@ -1,63 +1,44 @@
-import React, { useEffect, useState } from "react";
-import { Link, NavLink, useNavigate, useLocation, useParams } from "react-router-dom";
-import { useAuth } from "../../../../context/auth";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import axios from "axios"
+import React from "react";
+import { Fragment, useState } from "react";
 import {
   Accordion,
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
 
+const showAvailableCourse = () => {
+  let available_course = document.getElementById("available_course");
+  if (available_course.style.height == "0px") {
+    available_course.style.height = "100%";
+  } else {
+    available_course.style.height = "0px";
+  }
+};
 
 export default function Curriculum() {
-  const param = useParams();
   const [open, setOpen] = useState(0);
-  const [result, setCourse] = useState();
 
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
-  const [show, setShow] = useState(false)
-
-
-  const courseData1 = async () => {
-    // console.log(auth.token)
-    try {
-      const { data } = await axios.get(`http://localhost:8000/api/v1/course/${param.id}`);
-      setCourse(data.result);
-      // console.log(data.result);
-      
-    } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong");
-    }
-  };
-  useEffect(() => {
-    courseData1();
-  }, [])
-
+  const[show,setShow]=useState(false)
 
   return (
     <>
       <div className="bg-gray-200 h-full overflow-auto pt-8">
         <div
-          class="bg-cover bg-center backdrop-blur-sm  text-white py-20 px-10 mt-8"
+          class="bg-cover bg-center backdrop-blur-sm  text-white py-20 px-10 "
           style={{
             "background-image":
               "url(https://wallpapercave.com/wp/wp3105538.jpg)",
           }}
         >
           <div class="md:w-1/2 -mt-6 text-left  py-5 lg:ml-9 ml-0 ">
-            {/* {result&&result.map((c) => (
-              <p key={c._id} class=" font-bold text-2xl uppercase -mt-4">
-                {result.id}
-              </p>
-            ))} */}
-
+            <p class=" font-bold text-2xl uppercase -mt-4">
+              Full Stack Web Development Prime Pack 2023
+            </p>
             <p class=" font-bold">
-              {result && result.title}
+              A complete package to become a Full-Stack Web Developer
             </p>
             <div className="pr-4 mt-2">
               <ul className=" list-item">
@@ -65,7 +46,7 @@ export default function Curriculum() {
                 <li className="mt-1 text-sm"> Language - English</li>
                 <li className="mt-1 text-sm"> Updated on May, 2023</li>
                 <li className=" mt-1 text-sm">
-                  {result && result.category}
+                  Development, Web Development, HTML, CSS, Javascript
                 </li>
                 <li>★★★★★</li>
               </ul>
@@ -84,7 +65,13 @@ export default function Curriculum() {
                     About the Prime Pack:
                   </h1>
                   <p className="text-black font-medium">
-                    {result&&result.description}
+                    The Prime Pack is created specifically for learning and
+                    developing in-demand website-building skills. You will get a
+                    solid foundation for front-end and back-end web development,
+                    as well as server-side architecture. The intensive prime
+                    pack provides you with a comprehensive set of website
+                    development abilities, including real-time projects and a
+                    hands-on approach.
                   </p>
                   <div>
                     <h1 className="text-black text-lg font-bold mt-3">
@@ -117,7 +104,7 @@ export default function Curriculum() {
                 <div className="h-auto bg-white">
                   <button
                     className=" items-center p-2 duration-700 rounded-lg dark:text-black"
-                    onClick={() => setShow(!show)}
+                    onClick={()=>setShow(!show)}
                   >
                     view more...
                   </button>
@@ -229,8 +216,8 @@ export default function Curriculum() {
                         <AccordionHeader className="text-black font-bold">
                           HTML/CSS/JavaScript Course for Mordern Web Developer
                           <button>
-                            <h1 className="text-black text-4xl">+</h1>
-                          </button>
+                        <h1 className="text-black text-4xl">+</h1>
+                      </button>
                         </AccordionHeader>
                         <AccordionBody className="px-4">
                           <div class="p-1 ">
@@ -243,17 +230,18 @@ export default function Curriculum() {
                           </div>
                         </AccordionBody>
                       </Accordion>
+                     
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="z-50 sm:-mt-80 flex justify-center">
-              <div className="block lg:fixed ">
+            <div className="  z-50 lg:-mt-48   flex justify-center">
+              <div className="block lg:fixed w-96">
                 <div
                   id="whoobe-3fery"
-                  class="w-full md:w-80 justify-center items-center bg-white shadow-lg rounded-lg flex flex-col p-6"
+                  class="w-full md:w-96 justify-center items-center bg-white shadow-lg rounded-lg flex flex-col p-6"
                 >
                   <img
                     src="https://res.cloudinary.com/moodgiver/image/upload/v1633344243/adventure_woman_rujic1.webp"
@@ -269,7 +257,7 @@ export default function Curriculum() {
                     <h4 class="border-b-2 text-3xl" id="whoobe-3mr7n">
                       Info Card
                     </h4>
-                    <p class="my-4 md:my-1" id="whoobe-950fw">
+                    <p class="my-4" id="whoobe-950fw">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua. Ac tortor dignissim convallis aenean. Imperdiet
@@ -277,20 +265,44 @@ export default function Curriculum() {
                     </p>
                     <button
                       value="button"
-                      class="my-4 px-4 py-2 md:my-1 md:px-1 text-white hover:bg-blue-700 bg-blue-500"
+                      class="my-4 px-4 py-2 text-white hover:bg-blue-700 bg-blue-500"
                       id="whoobe-jkkr2"
-                      // onClick={byCourse}
                     >
-                      <Link to={`/dashboard/Purchase/ByCourse/${param.id}`}>Read more</Link>
+                      Read more
                     </button>
                   </div>
                 </div>
               </div>
+              {/* <div className="py-6">
+                    <div
+                      className="m-8 border-2 hover  :border-black flex px-5"
+                      onClick={() => handleOpen(1)}
+                    >
+                      <Accordion open={open === 1}>
+                        <AccordionHeader className="text-black font-bold">
+                          HTML/CSS/JavaScript Course for Mordern Web Developer
+                        </AccordionHeader>
+                        <AccordionBody className="px-4">
+                          <div class="p-1 ">
+                            <div className=" grid grid-cols-2  border-2 border-red-700 w-full p-2">
+                              <h1>video</h1>
+                              <h1 className="float-right">
+                                <button>View</button> 02.56
+                              </h1>
+                            </div>
+                          </div>
+                        </AccordionBody>
+                      </Accordion>
+                      <button>
+                        <h1 className="text-black text-4xl">+</h1>
+                      </button>
+                    </div>
+                  </div> */}
             </div>
           </div>
         </div>
       </div>
-
+          
     </>
   );
 }

@@ -5,6 +5,7 @@ import axios from "axios";
 import Loading from "../Loading";
 import Landing from "../../pages/home/Landing";
 import UserDashBoard from "../../pages/user/UserDashBoard";
+import Login from "../../pages/Login/Login";
 
 
 export default function PrivateRoute() {
@@ -13,16 +14,30 @@ export default function PrivateRoute() {
 
     useEffect(() => {
         const authCheck = async () => {
-            const res = await axios.get("http://localhost:8000/api/v1/user");
-            console.log(res)
-            if (res.data.token) {
-                setOk(true);
-            } else {
-                setOk(false);
-            }
-        };
-        if (auth?.token) authCheck();
-    }, [auth?.token]);
+            const data = localStorage.getItem("auth");
+            if (data) {
+                const parseData = JSON.parse(data);
+                // console.log(parseData.token)
+                setAuth({
+                    ...auth,
+                    user: parseData.user,
+                    token: parseData.token
+                });
+            };
+            console.log(auth.token)
+            //     // const res = await axios.get("http://localhost:8000/api/v1/user");
+            //     const res = localStorage.getItem(toString("auth"))
+            //     const parseData = JSON.parse(res)
+            //     console.log(parseData)
+            //     // console.log(res.data)
+                if (auth.token) {
+                    setOk(true);
+                } else {
+                    setOk(false);
+                }
+            };
+            if (auth?.token) authCheck();
+        }, [auth?.token]);
 
-    return ok ? <UserDashBoard /> :<Landing />;
+    return ok ? <UserDashBoard /> : <Landing />;
 }

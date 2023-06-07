@@ -12,6 +12,7 @@ import Mycourse from './Course/Mycourse/Mycourse'
 import Recentlyaccessedcourses from './Course/Recentlyaccessedcourses/Recentlyaccessedcourses';
 import Purchase from './Course/Purchase/Purchase';
 import PurchaseByCategory from './Course/Purchase/PurchaseByCategory'
+import Curriculum from './Course/Curriculum/Curriculum'
 import TestPage from '../test/test';
 const UserDashBoard = () => {
   return (
@@ -29,6 +30,7 @@ const UserDashBoard = () => {
             <Route path="Profile" element={<Profile />} />
             <Route path="Purchase" element={<Purchase />} />
             <Route path="category/:id" element={<PurchaseByCategory />} />
+            {/* <Route path="/Purchase/:id" element={<Curriculum />} /> */}
           </Routes>
         </div>
       </div>

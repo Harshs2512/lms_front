@@ -25,6 +25,9 @@ import Profile from './pages/user/Course/Profile/Profile';
 import Profileupdate from './pages/user/Course/Profile/Profileupdate';
 import PurchaseByCategory from './pages/user/Course/Purchase/PurchaseByCategory';
 import Reg from './components/Reg';
+import Curriculum from './pages/user/Course/Curriculum/Curriculum';
+import ByCourse from './pages/ByCourse/ByCourse';
+import MainadminDashboard from './pages/admin/admin/dashboard/MainadminDashboard';
 // import Profileupdate from './pages/user/Course/Profile/Profileupdate';
 
 // import { useDispatch } from "react-redux";
@@ -55,6 +58,9 @@ const Routing = () => {
       </Route>
       <Route path="/Profile" element={<Profile />} />
       <Route path="/ProfileUpdate" element={<Profileupdate />} />
+      <Route path="/dashboard/Purchase/:id" element={<Curriculum />} />
+      <Route path="/dashboard/Purchase/ByCourse/:id" element={<ByCourse />} />
+      <Route path="/dashboard/Purchase/Profile" element={<Profile />} />
       {/* <Route path="/category" element={<TestPage />} /> */}
 
       {/*
@@ -73,6 +79,9 @@ const Routing = () => {
       <Route path="/all-courses" element={<AllCourses />}>  </Route>
       <Route path="/course/:courseId" element={<CourseInfo />}>  </Route>
       <Route path="*" element={<NotFound />}>  </Route> */}
+      {/* ADMIN--------------------------------------------------- */}
+      <Route path="/admin" element={<MainadminDashboard />}>  </Route> 
+
     </Routes>
   );
 };

@@ -19,15 +19,41 @@ const Profile = () => {
   //     header2: value2
   //   }
   // };
+  // const { name, email } = auth?.user; 
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [user, setUser] = useState("");
 
-  useEffect(() => {
-    const { name, email } = auth?.user;     
-    setName(name)
-    setEmail(email)
-  }, []);
+
+  console.log(name);
+  console.log(email);
+
+  // useEffect(() => {
+  //   const [ name, email ] = auth?.user; 
+  //   setName(name)
+  //   setEmail(email)
+  // }, [auth.user]);
+
+  const profileData = async () => {
+    // console.log(auth.token)
+    try {
+        const { data } = await axios.get("http://localhost:8000/api/v1/me", {
+            headers: {
+                authorization: auth.token
+            }
+        });
+        setUser(data.user);
+        // console.log(data.user);
+    } catch (error) {
+        console.log(error);
+        toast.error("Something went wrong");
+    }
+};
+
+useEffect(() => {
+    profileData();
+},[auth.token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,6 +64,7 @@ const Profile = () => {
         name,
         email
       });
+
       if (data?.errro) {
         console.log("kkr")
         toast.error(data?.error);
@@ -63,7 +90,7 @@ const Profile = () => {
         <Sdbar />
       </div>
       <div>
-        <div className="h-screen w-full overflow-auto scrollbar-hide ">
+        <div className="overflow-auto scrollbar-hide ml-60 mt-20">
           <div class=" bg-gradient-to-tr from-gray-200 to-blue-100 h-full justify-center items-center">
             <div className="">
               <div class=" bg-gradient-to-tr from-red-200 to-blue-800 ">
@@ -72,7 +99,6 @@ const Profile = () => {
                   <h1 class="text-2xl text-gray-800 p-2">Profile</h1>
                 </div>
               </div>
-
               <div class="bg-white mx-auto border border-black mt-4 max-w-2xl shadow overflow-hidden sm:rounded-lg">
                 <div class="px-5 mt-12 ml-60 rounded-lg">
                   <img class="h-32 w-32 bg-white p-2 rounded-full" src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp" alt="" />
@@ -82,7 +108,7 @@ const Profile = () => {
                     <dl>
                       <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-xl font-medium text-gray-500 mt-5">
-                          Full name
+                          {user.name}
                         </dt>
                         <input
                           type="name"
@@ -96,7 +122,7 @@ const Profile = () => {
                       </div>
                       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-xl font-medium text-gray-500 mt-5">
-                          Email address
+                          {user.email}
                         </dt>
                         <input
                           type="email"

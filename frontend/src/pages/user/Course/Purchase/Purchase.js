@@ -74,7 +74,7 @@ export default function Purchase() {
                       <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
                     </svg>
                   </div>
-                  <Link to='/Mycourse'>
+                  <Link to={`${p._id}`}>
                     <button className=" text-[18px] mt-2 h-8 w-full text-white bg-indigo-600  items-center rounded-xl shadow-lg">View Lession</button></Link>
                 </div>
               </div>

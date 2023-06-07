@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import Login from "./Login";
 // import Signup from "../Signup";
 // import Reg from "../Reg";
@@ -32,6 +32,7 @@ const Header = () => {
   var mobileNav = document.getElementById("mobileNav");
   const [search, setSearch] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState([]);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -66,6 +67,29 @@ const Header = () => {
       toast.error("Something went wrong");
     }
   };
+
+
+  const profileData = async () => {
+    // console.log(auth.token)
+    try {
+        const { data } = await axios.get("http://localhost:8000/api/v1/me", {
+            headers: {
+                authorization: auth.token
+            }
+        });
+        setUser(data.user);
+        // console.log(data.user);
+    } catch (error) {
+        console.log(error);
+        toast.error("Something went wrong");
+    }
+};
+
+useEffect(() => {
+    profileData();
+},[auth.token]);
+
+
   const notify = () => toast('🦄 Wow so easy!', {
     position: "top-right",
     autoClose: 5000,
@@ -206,26 +230,26 @@ const Header = () => {
                             {isOpen && (
                               <div className="absolute bg-gradient-to-tr from-blue-100 to-blue-900 p-2 w-64 text-[#0f0333]  top-full -left-52 py-6  mt-4 rounded-md shadow-xl">
                                 <div class="max-w-xs">
-                                  <div class=" bg-transparent shadow-xl rounded-lg py-3">
-                                    <div class="photo-wrapper p-2">
-                                      <img
-                                        class="w-32 h-32 rounded-full mx-auto"
-                                        src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"
-                                        alt="John Doe"
-                                      />
-                                    </div>
-                                    <div class="p-2">
-                                      <div class="text-center text-gray-900 text-xs font-semibold">
-                                        <p className="text-white">Web Developer</p>
+                                    <div class=" bg-transparent shadow-xl rounded-lg py-3">
+                                      <div class="photo-wrapper p-2">
+                                        <img
+                                          class="w-32 h-32 rounded-full mx-auto"
+                                          src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"
+                                          alt="John Doe"
+                                        />
                                       </div>
-                                      <h3 class="text-center text-sm text-white font-medium leading-8">
-                                        Suresh Kumar Ji
-                                      </h3>
-                                      <h2 class="text-center text-sm text-white font-medium leading-8">
-                                        sureshkumar@gmail.com
-                                      </h2>
+                                      <div class="p-2">
+                                        <div class="text-center text-gray-900 text-xs font-semibold">
+                                          <p className="text-white">Web Developer</p>
+                                        </div>
+                                        <h3 class="text-center text-sm text-white font-medium leading-8">
+                                        
+                                        </h3>
+                                        <h2 class="text-center text-sm text-white font-medium leading-8">
+                                          {user.name}
+                                        </h2>
+                                      </div>
                                     </div>
-                                  </div>
                                 </div>
                                 <div className="mt-2 border-b border-black">
                                   <a
