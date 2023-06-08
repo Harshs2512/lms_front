@@ -55,8 +55,9 @@ const Routing = () => {
         <Route path="Mycourse" element={<Mycourse />} />
         <Route path="Purchase" element={<Purchase />} />
         <Route path="category" element={<PurchaseByCategory />} />
+        <Route path="all_course" element={<PurchaseByCategory />} />
+        <Route path="Profile" element={<Profile />} />
       </Route>
-      <Route path="/Profile" element={<Profile />} />
       <Route path="/ProfileUpdate" element={<Profileupdate />} />
       <Route path="/dashboard/Purchase/:id" element={<Curriculum />} />
       <Route path="/dashboard/Purchase/ByCourse/:id" element={<ByCourse />} />
@@ -80,7 +81,7 @@ const Routing = () => {
       <Route path="/course/:courseId" element={<CourseInfo />}>  </Route>
       <Route path="*" element={<NotFound />}>  </Route> */}
       {/* ADMIN--------------------------------------------------- */}
-      <Route path="/admin" element={<MainadminDashboard />}>  </Route> 
+      <Route path="/admin" element={<MainadminDashboard />}>  </Route>
 
     </Routes>
   );

@@ -17,7 +17,7 @@ const courseEnrollSchema = mongoose.Schema(
         required: true,
       },
     },
-    courseData:
+    courseData:[
       {
         courseName: {
           type: String,
@@ -34,6 +34,7 @@ const courseEnrollSchema = mongoose.Schema(
           required: true,
         },
       },
+    ]
   },
   { timestamps: true }
 );

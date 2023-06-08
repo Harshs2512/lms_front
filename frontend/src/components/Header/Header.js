@@ -90,24 +90,69 @@ useEffect(() => {
 },[auth.token]);
 
 
-  const notify = () => toast('🦄 Wow so easy!', {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  });;
-
   const toggleClose = () => {
     setToggle(false)
 
   }
   return (
     <>
-      <nav className="fixed z-50     w-full">
+    <div
+        id="mobileNav"
+        className="sm:hidden ease-linear bg-[#0f0333]/90 duration-200 absolute h-screen w-full mt-12  "
+        style={{
+          left: "-100%",
+        }}>
+        <ul className="mt-20 leading-[50px] text-heading grid place-content-center">
+          <li>
+            <img
+              src="https://cybrom.com/wp-content/uploads/2023/04/Logo-for-website-1.png"
+              className="w-30 h-14"/>
+          </li>
+          <li className=" text-center text-gray-400 hover:text-white hover:font-bold border-b-2">
+            {/* <li><UilChart/></li> */}
+            <NavLink to="/" className="-mt-2  ">
+              Home
+            </NavLink>
+          </li>
+          <li className="text-center  text-gray-400 hover:text-white hover:font-bold border-b-2">
+            {/* <li><UilCreateDashboard/></li> */}
+            <NavLink to="/Dashboard" className="-mt-2">
+              Dashboard
+            </NavLink>
+          </li>
+          <li className="text-center  text-gray-400 hover:text-white hover:font-bold border-b-2">
+            {/* <li><UilBook/></li> */}
+            <NavLink to="Mycourse" className="-mt-2">
+              My Course
+            </NavLink>
+          </li>
+          <li className="text-center  text-gray-400 hover:text-white hover:font-bold border-b-2">
+            {/* <li><UilBookOpen/></li> */}
+            <NavLink to="lesson" className="-mt-2">
+              All Course
+            </NavLink>
+          </li>
+          <li className="text-center  text-gray-400 hover:text-white hover:font-bold border-b-2">
+            {/* <li><UilPresentationCheck/></li> */}
+            <NavLink to="lecture" className="-mt-2">
+              Purchase Course
+            </NavLink>
+          </li>
+          <li className="text-center  text-gray-400 hover:text-white hover:font-bold border-b-2">
+            {/* <li><UilUsersAlt/></li> */}
+            <NavLink to="student" className="-mt-2">
+              Profile
+            </NavLink>
+          </li>
+          <li className="text-center  text-gray-400 hover:text-white hover:font-bold border-b-2">
+            {/* <li><UilSignOutAlt/></li> */}
+            <NavLink to="logout" className="-mt-2">
+              Logout
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+      <nav className="fixed z-50 w-full">
         <div className=" w-full bg-[#040239]    px-2 sm:px-6 lg:px-8  ">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -143,7 +188,7 @@ useEffect(() => {
                   <ul className="flex space-x-4">
                     <>
                       <li className="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
-                        <Link onClick={toggleClose} to="/profile">All Course</Link>
+                        <Link to="/all_course">All Course</Link>
                       </li>
                       <li className="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
                         <NavLink onClick={toggleClose} to="/all-courses">About Us</NavLink>
@@ -185,7 +230,7 @@ useEffect(() => {
                       auth.user.role === "user" && <>
                         <li className="text-base text-white mt-2"><Link to="/dashboard">Dashboard</Link>
                         </li>
-                        <li className="text-base text-white mt-2 sm:ml-20"><Link to="/all_course">All Courses</Link>
+                        <li className="text-base text-white mt-2 sm:ml-20"><Link to="/dashboard/Purchase">All Courses</Link>
                         </li>
                         <li className=" sm:ml-80">
                           <div class="max-w-md mx-auto">
@@ -221,7 +266,7 @@ useEffect(() => {
                             }
                           ><Link to="/Login">Logout</Link></button>
                         </li> */}
-                        <li className="sm:ml-10">
+                        <li className="sm:ml-10 block">
                           <UilUserCircle
                             onClick={toggleMenu}
                             className="cursor-pointer text-white w-10 h-10"
@@ -252,12 +297,9 @@ useEffect(() => {
                                     </div>
                                 </div>
                                 <div className="mt-2 border-b border-black">
-                                  <a
-                                    href="Profile"
-                                    className=" gap-2 py-1 flex  hover:bg-gray-200 "
-                                  >
+                                  <Link to="dashboard/Profile" className=" gap-2 py-1 flex  hover:bg-gray-200">
                                     <UilUserCircle /> Profile
-                                  </a>
+                                  </Link>
                                   <a
                                     href="Setting"
                                     className="gap-2 py-1 flex  hover:bg-gray-200 "
@@ -351,4 +393,3 @@ useEffect(() => {
   );
 }
 export default Header;
-

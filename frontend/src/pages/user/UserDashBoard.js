@@ -1,10 +1,6 @@
 import React from 'react'
-import ReactDOM from "react-dom/client";
 import { Routes, Route } from "react-router-dom";
-import Sdnav from './Sdnav'
 import Dashboard from './Course/Dashboard/Dashboard'
-import Frontend_Course from './Course/Frontend_Course'
-import Backend_Course from './Course/Backend_Course'
 import Massages from './Course/Massages/Massages'
 import Profile from './Course/Profile/Profile'
 import Sdbar from './Course/Sdbar/Sdbar'
@@ -12,8 +8,8 @@ import Mycourse from './Course/Mycourse/Mycourse'
 import Recentlyaccessedcourses from './Course/Recentlyaccessedcourses/Recentlyaccessedcourses';
 import Purchase from './Course/Purchase/Purchase';
 import PurchaseByCategory from './Course/Purchase/PurchaseByCategory'
-import Curriculum from './Course/Curriculum/Curriculum'
 import TestPage from '../test/test';
+import MyviewCourse from './Course/Mycourse/MyviewCourse';
 const UserDashBoard = () => {
   return (
     <>
@@ -30,6 +26,7 @@ const UserDashBoard = () => {
             <Route path="Profile" element={<Profile />} />
             <Route path="Purchase" element={<Purchase />} />
             <Route path="category/:id" element={<PurchaseByCategory />} />
+            <Route path="slug/Mycourse" element={<MyviewCourse />} />
             {/* <Route path="/Purchase/:id" element={<Curriculum />} /> */}
           </Routes>
         </div>

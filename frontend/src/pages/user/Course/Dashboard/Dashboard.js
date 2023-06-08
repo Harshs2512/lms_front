@@ -29,11 +29,10 @@ const Dashboard = () => {
         <div class="bg-gray-200 p-4 ">
           <h1 class="text-2xl text-gray-800">User Dashboard</h1>
           <div class="grid grid-cols-2 gap-4">
-
           </div>
         </div>
-        <main class="container mx-auto px-4 py-8">
-          <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 gap-4">
+        <main class="container mx-auto px-5 py-8">
+          <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 gap-4 p-4">
             {/* <!-- Course Listings --> */}
             <div class="bg-sky-200 h-36  rounded shadow">
               <NavLink to="/Massages"><div className=" flex py-4 text-sm">
@@ -68,7 +67,7 @@ const Dashboard = () => {
             </div>
 
             {/* <!-- User Information --> */}
-            <div class="bg-blue-200 md:w-56 lg:w-72 rounded shadow" onClick={getAllCourse}>
+            <div class="bg-blue-200 rounded shadow" onClick={getAllCourse}>
               <Link to="Purchase"><div className="flex mt-4">
                 <div>
                   <i className=" text-blue-800">  <UilShare className="h-14 w-14  p-1 mt-7" /></i>
@@ -80,14 +79,9 @@ const Dashboard = () => {
                 {/* <div className="mt-9  ml-2 text-center text-3xl font-bold"><h1>+25</h1></div> */}
 
               </div></Link>
-
             </div>
           </div>
-
-
         </main>
-
-
         <Outlet />
         <section class=" bg-slate-100 body-font border-t-2 ">
           <div class="container px-5 py-8 ">
