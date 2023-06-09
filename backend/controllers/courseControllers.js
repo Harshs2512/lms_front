@@ -54,9 +54,18 @@ exports.createCourse = catchAsyncErrors(async (req, res, next) => {
 // Get all data
 exports.getAllCourses = catchAsyncErrors(async (req, res) => {
     const courses = await Course.find();
+    // console.log(courses,"kkkkk")
+
+    // const count_data = [];
+    // const lessonCount = await Lesson.find().count();
+    // // const lessonCount1 = lessonCount.count()
+    // count_data.push({
+    //     lessonCountData: lessonCount
+    // })
+
     res.status(200).json({
         success: true,
-        courses,
+        courses
     });
 });
 // Update Course
@@ -95,7 +104,7 @@ exports.updateCourse = catchAsyncErrors(async (req, res) => {
                 runValidators: true,
                 useFindAndModify: false,
             });
-        
+
             res.status(200).json({
                 success: true,
                 course,
@@ -329,7 +338,7 @@ exports.createLesson = catchAsyncErrors(async (req, res, next) => {
 });
 
 // Update Lesson
-exports.updateLesson = catchAsyncErrors(async (req, res) => { 
+exports.updateLesson = catchAsyncErrors(async (req, res) => {
     let lesson = await Lesson.findById(req.params.id);
     // res.send(course);
     if (!lesson) {
@@ -363,4 +372,13 @@ exports.deleteLesson = catchAsyncErrors(async (req, res) => {
         message: "Lesson Deleted Successfully",
         result
     });
+});
+
+//show all Lessons by Course id
+exports.getAll = catchAsyncErrors(async (req, res) => {
+    const result = await Course.find({ lessonId: req.params.id });
+    res.status(200).json({
+        success: true,
+        result
+    })
 });

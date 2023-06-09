@@ -28,6 +28,7 @@ import Reg from './components/Reg';
 import Curriculum from './pages/user/Course/Curriculum/Curriculum';
 import ByCourse from './pages/ByCourse/ByCourse';
 import MainadminDashboard from './pages/admin/admin/dashboard/MainadminDashboard';
+import AllCourse from "./pages/home/AllCourse"
 // import Profileupdate from './pages/user/Course/Profile/Profileupdate';
 
 // import { useDispatch } from "react-redux";
@@ -62,6 +63,7 @@ const Routing = () => {
       <Route path="/dashboard/Purchase/:id" element={<Curriculum />} />
       <Route path="/dashboard/Purchase/ByCourse/:id" element={<ByCourse />} />
       <Route path="/dashboard/Purchase/Profile" element={<Profile />} />
+      <Route path="/all_course" element={<AllCourse />} />
       {/* <Route path="/category" element={<TestPage />} /> */}
 
       {/*
