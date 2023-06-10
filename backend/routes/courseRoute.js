@@ -15,7 +15,8 @@ const {
     updateLesson,
     getAll,
     getAllCoursesByCat_id,
-    getLessonDetail
+    getLessonDetail,
+    getFirstLesson
 
 } = require("../controllers/courseControllers");
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
@@ -40,6 +41,7 @@ router.route("/getAllLessons/:id").get(getAll);
 router.route("/add_lesson").post(isAuthenticatedUser, authorizeRoles("admin"), createLesson);
 router.route("/show_lesson").get(getAllLesson);
 router.route("/lesson/:id").put(isAuthenticatedUser, authorizeRoles("admin"), updateLesson).delete(isAuthenticatedUser, authorizeRoles("admin"), deleteLesson).get(getLessonDetail);
+router.route("/firstLesson/:id").get(getFirstLesson);
 
 
 module.exports = router

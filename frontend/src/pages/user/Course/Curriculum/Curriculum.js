@@ -48,6 +48,18 @@ export default function Curriculum() {
     };
   };
 
+  const firstLesson = async () => {
+    // console.log(auth.token)
+    try {
+      const { data } = await axios.get(`http://localhost:8000/api/v1/lesson/${param.id}`);
+      setLesssons(data.lessons);
+      console.log(data.lessons);
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    };
+  };
+
   useEffect(() => {
     courseData1();
     lessonData();

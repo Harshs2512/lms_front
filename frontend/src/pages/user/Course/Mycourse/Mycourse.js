@@ -23,7 +23,7 @@ export default function Mycourse() {
       });
       console.log(data.your_Orders);
       setCourse(data.your_Orders);
-      // console.log(data.result);
+      console.log(data.result);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
@@ -37,7 +37,7 @@ export default function Mycourse() {
     <div className='md:ml-[12.5rem] mt-16 md:w-[84%] w-[38%]'>
       <div class="bg-red-100 py-5 px-96 w-full">
         <div className='flex'>
-          <UilNotebooks className='h-14 w-10 ml-12' />  
+          <UilNotebooks className='h-14 w-10 ml-12' />
           <h1 class="text-2xl text-gray-800 p-2 ml-1">My Course</h1>
         </div>
       </div>
@@ -55,16 +55,18 @@ export default function Mycourse() {
 
                         {c?.courseData?.map((p, i) => (
                           <>
-                            <h1 className='text-lg font-semibold p-1'>{p?.courseName}</h1>
+                            <h1 className='text-lg font-semibold p-1'>{p?.courseId }</h1>
                             <h1 className="text-gray-800 cursor-pointer flex"><span><UilUserCircle /></span>Cybrom</h1>
                             <hr />
                             <div key={p._id} className='flex gap-1'><UilTable className='w-4 h-4 mt-1' /> <h1 className='text-sm font-semibold '>Title : {p.courseName}</h1></div>
                           </>))}
-                          <div className='flex gap-1'><UilPlay className='w-4 h-4 mt-1' />  <h1 className='text-sm font-semibold '>Buy on : {c?.createdAt.substring(0, 10)}</h1></div>
+                        <div className='flex gap-1'><UilPlay className='w-4 h-4 mt-1' />  <h1 className='text-sm font-semibold '>Buy on : {c?.createdAt.substring(0, 10)}</h1></div>
                       </div>
                     </div>
                     <div className='text-right '>
-                      <button className='w-28 rounded-lg mr-5 hover:bg-slate-400 text-sm font-semibold hover:text-white duration-150 transition-shadow    border-2 border-red-500 h-8'><Link to="/dashboard/slug/Mycourse">View now</Link></button> </div>
+                      {c?.courseData?.map((p  ) => (
+                        <button key={p._id} className='w-28 rounded-lg mr-5 hover:bg-slate-400 text-sm font-semibold hover:text-white duration-150 transition-shadow    border-2 border-red-500 h-8'><Link to={"/dashboard/Mycourse/" + p?.courseID}>View now {p.courseName}</Link></button>))}
+                      </div>
                   </div>
                 </div>
               </div>

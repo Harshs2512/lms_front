@@ -26,7 +26,7 @@ const UserDashBoard = () => {
             <Route path="Profile" element={<Profile />} />
             <Route path="Purchase" element={<Purchase />} />
             <Route path="category/:id" element={<PurchaseByCategory />} />
-            <Route path="slug/Mycourse" element={<MyviewCourse />} />
+            <Route path="Mycourse/:id" element={<MyviewCourse />} />
             {/* <Route path="/Purchase/:id" element={<Curriculum />} /> */}
           </Routes>
         </div>

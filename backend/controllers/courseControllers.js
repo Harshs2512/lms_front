@@ -385,9 +385,18 @@ exports.getAll = catchAsyncErrors(async (req, res) => {
 
 //show all Lessons Detail
 exports.getLessonDetail = catchAsyncErrors(async (req, res) => {
-    const lessons = await Lesson.find({courseId:req.params.id});
+    const lessons = await Lesson.find({courseId: req.params.id});
     res.status(200).json({
         success: true,
         lessons
     });
 });
+
+exports.getFirstLesson = catchAsyncErrors(async (req, res) => {
+    const firstlesson = await Lesson.find({courseId: req.params.id}).limit(1);
+    res.status(200).json({
+        success: true,
+        firstlesson
+    });
+});
+// ({$project: { highmarks: { $filter: { input: "$marks", as: "marks", cond: { $gt: [ "$$marks", 10 ] } } } } } )
