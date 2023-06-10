@@ -95,7 +95,6 @@ const Dashboard = () => {
                   <p className=" mx-6 float-left first: text-gray-700">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
                   </p>
                 </div>
-
               </div>
             </div>
             <div class="flex flex-wrap mt-3 -m-4">
@@ -111,12 +110,10 @@ const Dashboard = () => {
                           Learn more..
                         </h1>
                       </a>
-
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </section>

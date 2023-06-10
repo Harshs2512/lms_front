@@ -14,7 +14,8 @@ const {
     deleteLesson,
     updateLesson,
     getAll,
-    getAllCoursesByCat_id
+    getAllCoursesByCat_id,
+    getLessonDetail
 
 } = require("../controllers/courseControllers");
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
@@ -35,10 +36,10 @@ router.route("/show_category").get(getAllCategory);
 router.route("/category/:id").put(isAuthenticatedUser, authorizeRoles("admin"), updateCategory).delete(isAuthenticatedUser, authorizeRoles("admin"), deleteCategory);
 
 //For add Lesson CRUD operation
-router.route("/getAllLessons").get(getAll);
+router.route("/getAllLessons/:id").get(getAll);
 router.route("/add_lesson").post(isAuthenticatedUser, authorizeRoles("admin"), createLesson);
 router.route("/show_lesson").get(getAllLesson);
-router.route("/lesson/:id").put(isAuthenticatedUser, authorizeRoles("admin"), updateLesson).delete(isAuthenticatedUser, authorizeRoles("admin"), deleteLesson);
+router.route("/lesson/:id").put(isAuthenticatedUser, authorizeRoles("admin"), updateLesson).delete(isAuthenticatedUser, authorizeRoles("admin"), deleteLesson).get(getLessonDetail);
 
 
 module.exports = router

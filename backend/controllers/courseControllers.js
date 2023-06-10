@@ -376,9 +376,18 @@ exports.deleteLesson = catchAsyncErrors(async (req, res) => {
 
 //show all Lessons by Course id
 exports.getAll = catchAsyncErrors(async (req, res) => {
-    const result = await Course.find({ lessonId: req.params.id });
+    const result = await Course.findById({ lessonId: req.params.id });
     res.status(200).json({
         success: true,
         result
-    })
+    });
+});
+
+//show all Lessons Detail
+exports.getLessonDetail = catchAsyncErrors(async (req, res) => {
+    const lessons = await Lesson.find({courseId:req.params.id});
+    res.status(200).json({
+        success: true,
+        lessons
+    });
 });

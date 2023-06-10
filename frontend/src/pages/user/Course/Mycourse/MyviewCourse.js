@@ -17,13 +17,13 @@ export default function MyviewCourse() {
     setIsOpenes(!isOpenes);
   };
   return (
-    <>
-      <div className='ml-40'>
+    
+      <div className='ml-10 w-[80rem]'>
         <div className='bg-gray-300 w-full h-14 font-bold text-xl'>
           <h1>My Course Start</h1>
         </div>
-        <div className='py-10'>
-          <div className='grid grid-cols-2 md:grid-cols-2 sm:grid-cols-1 w-3/5 h-14 px-4 py-3 rounded-lg font-bold  mx-auto '>
+        <div className=''>
+          <div className='grid grid-cols-2 md:grid-cols-2 sm:grid-cols-1 w-80 h-14 py-3 rounded-lg font-bold '>
             <div>
               <h1>Course Content</h1>
             </div>
@@ -125,7 +125,5 @@ export default function MyviewCourse() {
           </div>
         </div>
       </div>
-
-    </>
   )
 }

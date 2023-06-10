@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { UilShare } from '@iconscout/react-unicons';
-import { Link, Outlet, NavLink, useParams } from "react-router-dom";
+import { Link, Outlet, NavLink, useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from 'axios';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 const PurchaseByCategory = () => {
     const [isLoading, setIsLoading] = useState(true);
-
+    const navigate = useNavigate();
+    const location = useLocation();
     const params = useParams();
 
     const [result, setResult] = useState([]);
@@ -17,6 +18,9 @@ const PurchaseByCategory = () => {
             const { data } = await axios.get(`http://localhost:8000/api/v1/Showcourse/ByCate_id/${params.id}`);
             setResult(data.result);
             console.log(data.result)
+            setTimeout(() => {
+                navigate(location.state || "/dashboard");
+            }, 2000)
         } catch (error) {
             console.log(error);
         }

@@ -15,6 +15,8 @@ export default function Curriculum() {
   const param = useParams();
   const [open, setOpen] = useState(0);
   const [result, setCourse] = useState();
+  const [lessons, setLesssons] = useState();
+  const [auth, setAuth] = useAuth();
 
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
@@ -27,23 +29,37 @@ export default function Curriculum() {
     try {
       const { data } = await axios.get(`http://localhost:8000/api/v1/course/${param.id}`);
       setCourse(data.result);
-      // console.log(data.result);
-      
+      console.log(data.result);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
     }
   };
+
+  const lessonData = async () => {
+    // console.log(auth.token)
+    try {
+      const { data } = await axios.get(`http://localhost:8000/api/v1/lesson/${param.id}`);
+      setLesssons(data.lessons);
+      console.log(data.lessons);
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    };
+  };
+
   useEffect(() => {
     courseData1();
+    lessonData();
   }, [])
 
 
   return (
+
     <>
       <div className="bg-gray-200 h-full overflow-auto pt-8">
         <div
-          class="bg-cover bg-center backdrop-blur-sm  text-white py-20 px-10 mt-8"
+          class="bg-cover w-[100%] bg-center backdrop-blur-sm  text-white py-20 px-10 mt-8"
           style={{
             "background-image":
               "url(https://wallpapercave.com/wp/wp3105538.jpg)",
@@ -58,12 +74,13 @@ export default function Curriculum() {
 
             <p class=" font-bold">
               {result && result.title}
+              {lessons && lessons.title}
             </p>
             <div className="pr-4 mt-2">
               <ul className=" list-item">
-                <li className="mt-1 text-sm">Tutorialspoint</li>
+                <li className="mt-1 text-sm">Cybrom</li>
                 <li className="mt-1 text-sm"> Language - English</li>
-                <li className="mt-1 text-sm"> Updated on May, 2023</li>
+                <li className="mt-1 text-sm"> Created on {result && result.createdAt}.substring(0, 10)</li>
                 <li className=" mt-1 text-sm">
                   {result && result.category}
                 </li>
@@ -84,34 +101,9 @@ export default function Curriculum() {
                     About the Prime Pack:
                   </h1>
                   <p className="text-black font-medium">
-                    {result&&result.description}
+                    {result && result.description}
                   </p>
                   <div>
-                    <h1 className="text-black text-lg font-bold mt-3">
-                      The Future of Web Development:
-                    </h1>
-                    <ol className="px-6 text-black">
-                      <li className="text-black font-medium text-sm">
-                        <p>
-                          According to Indeed, the average full-stack
-                          developer's income is $108 million per year.
-                        </p>
-                      </li>
-                      <li className="text-black font-medium text-sm">
-                        <p>
-                          According to the US Bureau of Labor Statistics, there
-                          will be 8.53 million available full-stack developer
-                          jobs by 2024.
-                        </p>
-                      </li>
-                      <li className="text-black font-medium text-sm">
-                        <p>
-                          The average job satisfaction rating in full stack
-                          development is 4 out of 5 because they are versatile
-                          and have experience on both sides.
-                        </p>
-                      </li>
-                    </ol>
                   </div>
                 </div>
                 <div className="h-auto bg-white">
@@ -125,126 +117,38 @@ export default function Curriculum() {
                     id="available_course"
                     className=" text-[12px] overflow-hidden text-black duration-500"
                   >
-                    <h1 className="text-black text-lg font-bold mt-3 px-4">
-                      Why should you get this prime pack?
-                    </h1>
-                    <ul className="text-black px-8">
-                      <li className="text-black font-medium text-sm">
-                        <p>
-                          We have designed the guide to get you started with
-                          HTML, CSS, and JavaScript, Angular and Vue.
-                        </p>
-                      </li>
-                      <li className="text-black font-medium text-sm">
-                        <p>
-                          You will also learn the fundamentals of popular
-                          JavaScript language working with its elements, and
-                          easy styling with DOM manipulation.
-                        </p>
-                      </li>
-                      <li className="text-black font-medium text-sm">
-                        <p>
-                          You will learn Angular coding fundamentals with
-                          Syntax, used to make JavaScript easy for website
-                          development.
-                        </p>
-                      </li>
-                      <li className="text-black font-medium text-sm">
-                        <p>
-                          Similarly, you will learn how to build the project in
-                          Node JS, React and MongoDB.
-                        </p>
-                      </li>
-                      <li className="text-black font-medium text-sm">
-                        <p>
-                          Once you're familiar with the fundamental concepts,
-                          learn about Git and GitHub version control, which are
-                          used to track work and explore changes made to data,
-                          code scripts, and notes.
-                        </p>
-                      </li>
-                      <li className="text-black font-medium text-sm">
-                        <p>
-                          Get hands-on experience with MongoDB from the
-                          beginning to the end, including querying, connecting
-                          to, saving, and analyzing data.
-                        </p>
-                      </li>
-                    </ul>
-                    <div className="mt-2">
-                      <h1 className="text-lg text-black font-bold ml-5">
-                        Goals
-                      </h1>
-                      <ul className="px-8">
-                        <li className="text-black font-medium text-sm">
-                          <p>
-                            You will also learn the fundamentals of popular
-                            JavaScript language working with its elements, and
-                            easy styling with DOM manipulation.
-                          </p>
-                        </li>
-                        <li className="text-black font-medium text-sm">
-                          <p>
-                            You will learn Angular coding fundamentals with
-                            Syntax, used to make JavaScript easy for website
-                            development.
-                          </p>
-                        </li>
-                        <li className="text-black font-medium text-sm">
-                          <p>
-                            Similarly, you will learn how to build the project
-                            in Node JS, React and MongoDB.
-                          </p>
-                        </li>
-                        <li className="text-black font-medium text-sm">
-                          <p>
-                            Once you're familiar with the fundamental concepts,
-                            learn about Git and GitHub version control, which
-                            are used to track work and explore changes made to
-                            data, code scripts, and notes.
-                          </p>
-                        </li>
-                        <li className="text-black font-medium text-sm">
-                          <p>
-                            Get hands-on experience with MongoDB from the
-                            beginning to the end, including querying, connecting
-                            to, saving, and analyzing data.
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
                   </div>}
                 </div>
                 <div className="  bg-white w-full lg:w-[50rem] mt-14 rounded-t-lg ">
                   <h1 className="rounded-t-lg bg-slate-400 text-lg font-bold py-2 px-2">
                     Currinculam
                   </h1>
-
-                  <div className="py-6">
+                  {lessons && lessons.map((l) => (<>
+                  <div className="py-1">
                     <div
-                      className="m-8 border-2 hover  :border-black flex px-5"
+                      className="m-2 border-2 hover  :border-black flex px-5 text-left"
                       onClick={() => handleOpen(1)}
                     >
                       <Accordion open={open === 1}>
                         <AccordionHeader className="text-black font-bold">
-                          HTML/CSS/JavaScript Course for Mordern Web Developer
-                          <button>
-                            <h1 className="text-black text-4xl">+</h1>
+                        {l.title}
+                          <button className="">
+                            <h1 className="text-black text-3xl">+</h1>
                           </button>
                         </AccordionHeader>
                         <AccordionBody className="px-4">
-                          <div class="p-1 ">
+                          <Link to="https://youtu.be/E7HjaoES64s">
                             <div className=" grid grid-cols-2  border-2 border-red-700 w-full p-2">
-                              <h1>video</h1>
+                              <h1>{l.title}</h1>
                               <h1 className="float-right">
                                 <button>View</button> 02.56
                               </h1>
                             </div>
-                          </div>
+                          </Link>
                         </AccordionBody>
                       </Accordion>
                     </div>
-                  </div>
+                  </div></>))}
                 </div>
               </div>
             </div>
@@ -265,23 +169,23 @@ export default function Curriculum() {
                   <div
                     id="whoobe-1okdg"
                     class="w-full p-4  justify-start flex flex-col"
-                  >
-                    <h4 class="border-b-2 text-3xl" id="whoobe-3mr7n">
-                      Info Card
+                  > {lessons && lessons.map((l) => (<>
+                    <h4 key={l._id} class="border-b-2 text-3xl" id="whoobe-3mr7n">
+                        <div>
+                          {l && l.title}
+                        </div>
                     </h4>
-                    <p class="my-4 md:my-1" id="whoobe-950fw">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ac tortor dignissim convallis aenean. Imperdiet
-                      massa tincidunt nunc pulvinar.
-                    </p>
+                    <p class="my-4 md:my-1 px-10 " id="whoobe-950fw">
+                    {l.discreption}
+                    </p></>
+                    ))}
                     <button
                       value="button"
                       class="my-4 px-4 py-2 md:my-1 md:px-1 text-white hover:bg-blue-700 bg-blue-500"
                       id="whoobe-jkkr2"
-                      // onClick={byCourse}
+                    // onClick={byCourse}
                     >
-                      <Link to={`/dashboard/Purchase/ByCourse/${param.id}`}>Read more</Link>
+                      <Link to={`/dashboard/Purchase/ByCourse/${param.id}`}>Buy Now</Link>
                     </button>
                   </div>
                 </div>
