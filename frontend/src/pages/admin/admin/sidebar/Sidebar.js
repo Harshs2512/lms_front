@@ -1,9 +1,18 @@
 import React from 'react'
 import { UilListUiAlt,UilChart,UilCreateDashboard,UilBook,UilBookOpen,UilPresentationCheck,UilUsersAlt,UilSignOutAlt } from '@iconscout/react-unicons'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { useAuth } from "../../../../context/auth";
+
 
 export default function Sidebar() {
   const sideNav=document.getElementById('sideNav')
+  const [auth, setAuth] = useAuth();
+  const navigate = useNavigate();
+
+
 
   const openSideMenu=()=>{
     if(sideNav.style.width==='25px'){
@@ -13,6 +22,30 @@ export default function Sidebar() {
       sideNav.style.width='25px'
     }
   }
+
+
+  const handleLogout = async (e) => {
+    // console.log("hjggjgjgj")
+    e.preventDefault();
+    try {
+      await axios.get("http://localhost:8000/api/v1/logout");
+
+      // if (res && res.data.success) {
+      //   toast.success(res.data && res.data.message);
+      setAuth({
+        ...auth,
+        user: null,
+        token: null,
+      });
+      localStorage.clear("token");
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  };
+
   return (
     <>
     <div  className='hidden sm:block h-screen  shadow-md overflow-hidden bg-darkblue transition delay-100 duartion-500 ease-in-out ' id='sideNav'
@@ -26,7 +59,7 @@ export default function Sidebar() {
         <ul className='mt-20 leading-[50px] text-heading  '>
             <li className='  flex  gap-2'>
               <li><UilChart/></li>
-             <NavLink to='/' className='-mt-2'>Dashboard</NavLink>
+             <NavLink to='/dashboard' className='-mt-2'>Dashboard</NavLink>
             </li>
             <li className='  flex  gap-2'>
               <li><UilCreateDashboard/></li>
@@ -50,7 +83,7 @@ export default function Sidebar() {
             </li>
             <li className='  flex  gap-2'>
               <li><UilSignOutAlt/></li>
-             <NavLink to='logout' className='-mt-2'>Logout</NavLink>
+             <NavLink onClick={handleLogout} className='-mt-2'>Logout</NavLink>
             </li>
         </ul>
 

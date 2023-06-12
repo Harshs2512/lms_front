@@ -16,6 +16,7 @@ export default function Curriculum() {
   const [open, setOpen] = useState(0);
   const [result, setCourse] = useState();
   const [lessons, setLesssons] = useState();
+  const [firstlesson, setFirstlesson] = useState();
   const [auth, setAuth] = useAuth();
 
   const handleOpen = (value) => {
@@ -29,7 +30,6 @@ export default function Curriculum() {
     try {
       const { data } = await axios.get(`http://localhost:8000/api/v1/course/${param.id}`);
       setCourse(data.result);
-      console.log(data.result);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
@@ -41,7 +41,6 @@ export default function Curriculum() {
     try {
       const { data } = await axios.get(`http://localhost:8000/api/v1/lesson/${param.id}`);
       setLesssons(data.lessons);
-      console.log(data.lessons);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
@@ -50,10 +49,11 @@ export default function Curriculum() {
 
   const firstLesson = async () => {
     // console.log(auth.token)
+    console.log(param)
     try {
-      const { data } = await axios.get(`http://localhost:8000/api/v1/lesson/${param.id}`);
-      setLesssons(data.lessons);
-      console.log(data.lessons);
+      const { data } = await axios.get(`http://localhost:8000/api/v1/firstLesson/${param.id}`);
+      setFirstlesson(data.firstlesson);
+      console.log(data.firstlesson);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
@@ -61,6 +61,7 @@ export default function Curriculum() {
   };
 
   useEffect(() => {
+    firstLesson();
     courseData1();
     lessonData();
   }, [])
@@ -181,7 +182,7 @@ export default function Curriculum() {
                   <div
                     id="whoobe-1okdg"
                     class="w-full p-4  justify-start flex flex-col"
-                  > {lessons && lessons.map((l) => (<>
+                  > {firstlesson && firstlesson.map((l) => (<>
                     <h4 key={l._id} class="border-b-2 text-3xl" id="whoobe-3mr7n">
                         <div>
                           {l && l.title}
@@ -206,7 +207,6 @@ export default function Curriculum() {
           </div>
         </div>
       </div>
-
     </>
   );
 }

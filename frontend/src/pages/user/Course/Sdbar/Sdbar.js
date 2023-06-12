@@ -42,23 +42,23 @@ const Sdbar = () => {
 
 
   const handleLogout = async (e) => {
-  e.preventDefault();
-  try {
-    await axios.get("http://localhost:8000/api/v1/logout");
-    setAuth({
-      ...auth,
-      user: null,
-      token: null,
-    });
-    localStorage.clear("token");
-    navigate(location.state || "/");
-  }
+    e.preventDefault();
+    try {
+      await axios.get("http://localhost:8000/api/v1/logout");
+      setAuth({
+        ...auth,
+        user: null,
+        token: null,
+      });
+      localStorage.clear("token");
+      navigate(location.state || "/");
+    }
 
-  catch (error) {
-    console.log(error);
-    toast.error("Something went wrong");
-  }
-};
+    catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  };
 
   const getAllCategory = async () => {
     try {
@@ -112,7 +112,7 @@ const Sdbar = () => {
                   >
                     <span
                       className="flex -mt-8 text-left text-[12px]"
-                    
+
                     >
                       Category<AiFillCaretUp className={` cursor-pointer ml-4 mt-2 w-7 text-white  ${!close && "rotate-180"}`}
                         onClick={() => Setopen(!close)} />

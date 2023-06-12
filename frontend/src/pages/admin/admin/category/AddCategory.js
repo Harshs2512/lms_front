@@ -1,19 +1,45 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import CategoryForm from "../../../../components/Form/CategoryForm"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function AddCategory() {
-  const [category,setCategory]=useState("")
+const CreateCategory = () => {
+  //const [category,setCategory]=useState("")
+   const [catName, setName] = useState("");
+
+
+  //handle Form
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post("http://localhost:8000/api/v1/category/", {
+        catName,
+      });
+      if (data?.success) {
+        toast.success(`${catName} category is created`);
+        //getAllCategory();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something Went Wrong");
+    }
+  };
+
   return (
     <>
-    <div className='shadow-xl w-96 mx-auto p-6 rounded-xl text-center mt-5 border border-heading'>
-        <form className='mx-auto w-52' >
-             <input type='text' value={category} onChange={e=>setCategory(e.target.value)} 
-             placeholder='Enter Category' 
-             className='border-b-[1px] text-center p-2 border-darkblue'
-             ></input><br/><br/>
-             <button className='text-heading bg-darkblue rounded-2xl w-28' >Save</button>
-        </form>
-    </div> 
+    
+    <CategoryForm handleSubmit={handleSubmit}
+                value={catName}
+                setValue={setName} />
+    
+    
+    <ToastContainer/>
     </>
   )
 }
+
+export default CreateCategory;

@@ -10,58 +10,66 @@ const ByCourse = () => {
     const param = useParams();
     const [open, setOpen] = useState(0);
     const [result, setCourse] = useState();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const courseData1 = async () => {
         // console.log(auth.token)
         try {
-          const { data } = await axios.get(`http://localhost:8000/api/v1/course/${param.id}`);
-          setCourse(data.result);
-          // console.log(data.result);
-          
+            const { data } = await axios.get(`http://localhost:8000/api/v1/course/${param.id}`);
+            setCourse(data.result);
+            // console.log(data.result);
+
         } catch (error) {
-          console.log(error);
-          toast.error("Something went wrong");
+            console.log(error);
+            toast.error("Something went wrong");
         }
-      };
-      useEffect(() => {
+    };
+    useEffect(() => {
         courseData1();
-      }, [])
+    }, [])
 
     const courseData = [
         {
-          courseName: result&&result.title,
-          coursePrice: result&&result.selling_price,
-          courseID: "6466031530f6f213f9fe4a1e"
+            courseName: result && result.title,
+            coursePrice: result && result.selling_price,
+            courseID: "6466031530f6f213f9fe4a1e"
         }
-      ]
-  const paymentInfo = {
-    transactionId: "123452133",
-    status: "success"
-  };
-  // console.log(result)
+    ]
+    const paymentInfo = {
+        transactionId: "123452133",
+        status: "success"
+    };
+    // console.log(result)
 
-  const byCourse = async () => {
-    try {
-      // const { data } = await axios.get(`http://localhost:8000/api/v1/course/${param.id}`);
-      // setCourse(data.result);
-      // console.log(data.result)
-      const res = await axios.post("http://localhost:8000/api/v1/courseEnroll/new", {
-        paymentInfo,
-        courseData
-      })
-      console.log(res)
-    }
-    catch (error) {
-      console.log(error);
-      toast.error("Something went wrong");
-    }
-  };
-  const discounted = `${result&&result.discounted_price}`;
-  const selling = `${result&&result.selling_price}`;
-  const discount=~(Number(discounted)-Number(selling));
+    const byCourse = async () => {
+        try {
+            const res = await axios.post("http://localhost:8000/api/v1/courseEnroll/new", {
+                paymentInfo,
+                courseData
+            })
+            final();
+            toast.success("Success fully buy")
+        }
+        catch (error) {
+            console.log(error);
+            toast.error("Something went wrong");
+        }
+        
+    };
+    function final() {
+        setTimeout(() => {
+            navigate("/dashboard")
+        }, 2000);
+    };
+    
+    const discounted = `${result && result.discounted_price}`;
+    const selling = `${result && result.selling_price}`;
+    const discount = ~(Number(discounted) - Number(selling));
 
     return (
         <>
+        <ToastContainer/>
             <div className="h-[100vh] w-full  overflow-auto scrollbar-hide p-4 bg-slate-100 border border-red-600">
                 <div className="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
                     <div className="flex justify-start item-start space-y-2 flex-col ">
@@ -77,15 +85,15 @@ const ByCourse = () => {
                                             <div class='bg-gray-600'>
                                                 <img src="https://wallpapercave.com/wp/wp7420966.jpg" alt="" className=' object-cover h-24' /> </div>
                                             <div className=' w-full px-4 '>
-                                                <h1 className='text-lg font-serif'>Course: &nbsp; {result&&result.title} </h1>
-                                                <div className='flex gap-1'><UilTable className='w-4 h-4 mt-1' />  <h1 className='text-sm font-serif '>Course Title: &nbsp; {result&&result.title}</h1></div>
+                                                <h1 className='text-lg font-serif'>Course: &nbsp; {result && result.title} </h1>
+                                                <div className='flex gap-1'><UilTable className='w-4 h-4 mt-1' />  <h1 className='text-sm font-serif '>Course Title: &nbsp; {result && result.title}</h1></div>
                                                 <div className='flex gap-1'><UilClock className='w-4 h-4 mt-1' />  <h1 className='text-sm font-serif '>Course Time</h1></div>
                                                 <div className='flex gap-1'><UilPlay className='w-4 h-4 mt-1' />  <h1 className='text-sm font-serif '>Total Lession</h1></div>
                                                 <div className='flex'>
                                                     <UilRupeeSign UilTable className='w-4 h-4 mt-1' />
                                                     <div class="flex gap-2">
-                                                        <span class=" text-red-500 line-through lg:text-sm font-bold "> {result&&result.discounted_price}</span>
-                                                        <span class="text-gray-600 font-bold   flex ml-2"> <UilRupeeSign UilTable className='w-4 h-4 mt-1' />{result&&result.selling_price}</span>
+                                                        <span class=" text-red-500 line-through lg:text-sm font-bold "> {result && result.discounted_price}</span>
+                                                        <span class="text-gray-600 font-bold   flex ml-2"> <UilRupeeSign UilTable className='w-4 h-4 mt-1' />{result && result.selling_price}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -105,7 +113,7 @@ const ByCourse = () => {
                                     <div className="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
                                         <div className="flex justify-between  w-full">
                                             <p className="text-base leading-4 text-gray-800">Selling Price</p>
-                                            <p className="text-xl leading-4 text-gray-600">{result&&result.discounted_price}</p>
+                                            <p className="text-xl leading-4 text-gray-600">{result && result.discounted_price}</p>
                                         </div>
                                         <div className="flex justify-between items-center w-full">
                                             <p className="text-base leading-4 text-gray-800">
@@ -117,7 +125,7 @@ const ByCourse = () => {
                                     </div>
                                     <div className="flex justify-between items-center w-full">
                                         <p className="text-base font-semibold leading-4 text-gray-800">Total</p>
-                                        <p className="text-xl font-semibold leading-4 text-gray-600">{result&&result.selling_price}</p>
+                                        <p className="text-xl font-semibold leading-4 text-gray-600">{result && result.selling_price}</p>
                                     </div>
                                 </div>
 

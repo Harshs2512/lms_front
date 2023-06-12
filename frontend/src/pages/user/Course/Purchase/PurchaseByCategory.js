@@ -17,13 +17,9 @@ const PurchaseByCategory = () => {
         try {
             const { data } = await axios.get(`http://localhost:8000/api/v1/Showcourse/ByCate_id/${params.id}`);
             setResult(data.result);
-            console.log(data.result)
-            setTimeout(() => {
-                navigate(location.state || "/dashboard");
-            }, 2000)
         } catch (error) {
             console.log(error);
-        }
+        };
     };
     useEffect(() => {
         getAllCourseByCategory();

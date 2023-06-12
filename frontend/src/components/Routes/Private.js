@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/auth";
-import { Outlet } from "react-router-dom";
-import axios from "axios";
-import Loading from "../Loading";
 import Landing from "../../pages/home/Landing";
 import UserDashBoard from "../../pages/user/UserDashBoard";
-import Login from "../../pages/Login/Login";
+
 
 
 export default function PrivateRoute() {

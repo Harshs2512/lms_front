@@ -1,7 +1,6 @@
 import React from 'react'
 import Sidebar from '../sidebar/Sidebar'
 import { Routes, Route } from 'react-router-dom'
-import Dashboard from './AdminDashboard'
 import Course from '../courses/Course'
 import Category from '../category/Category'
 import Lesson from '../lesson/Lesson'
@@ -15,19 +14,20 @@ import Lecture from '../lecture/Lecture'
 import AddLecture from '../lecture/AddLecture'
 import ShowLesson from '../lesson/ShowLesson'
 import ViewLecture from '../lecture/ViewLecture'
+import AdminDashboard from '../dashboard/AdminDashboard'
 import Navbar from '../navbar/Navbar'
 
-export default function AdminDashboard() {
+export default function MainadminDashboard() {
   return (
     <>
       <div className='flex h-screen'>
-        <Sidebar />
+       <Sidebar/>
         <div className='w-[100%] h-screen overflow-auto scrollbar-hide '>
           <Routes>
-            <Route path='/admin' element={<Dashboard />}></Route>
+            <Route path='' element={<AdminDashboard />}></Route>
             <Route path='/course' element={<Course />}>
-              <Route path='/course/AddCourse' element={<AddCourse />}></Route>
-              <Route path='/course/ViewCourse' element={<ViewCourse />}></Route>
+              <Route path='course/AddCourse' element={<AddCourse />}></Route>
+              <Route path='course/ViewCourse' element={<ViewCourse />}></Route>
             </Route>
             <Route path='/Category' element={<Category />} >
               <Route path='/Category/Addcategory' element={<AddCategory />}></Route>

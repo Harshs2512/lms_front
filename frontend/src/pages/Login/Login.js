@@ -113,7 +113,7 @@ const Login = () => {
                   <div className="text-center mt-10">
                     <button
                       type="submit"
-                      className="uppercase px-24 md:px-[118px] lg:px-[140px] py-2 rounded-md  font-bold  text-white  hover:brightness-105  bg-gray-900 "
+                      className="uppercase px-24 md:px-[118px] lg:px-[140px] py-2 rounded-md  font-bold  text-white  hover:brightness-105  bg-[#0f0c5c]"
                     >
                       <span id="loading">login</span>
                     </button>

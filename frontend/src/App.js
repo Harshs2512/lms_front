@@ -24,11 +24,14 @@ import Purchase from './pages/user/Course/Purchase/Purchase';
 import Profile from './pages/user/Course/Profile/Profile';
 import Profileupdate from './pages/user/Course/Profile/Profileupdate';
 import PurchaseByCategory from './pages/user/Course/Purchase/PurchaseByCategory';
-import Reg from './components/Reg';
 import Curriculum from './pages/user/Course/Curriculum/Curriculum';
 import ByCourse from './pages/ByCourse/ByCourse';
 import MainadminDashboard from './pages/admin/admin/dashboard/MainadminDashboard';
 import AllCourse from "./pages/home/AllCourse"
+import { useAuth } from "./context/auth";
+import AdminDashboard from "./pages/admin/admin/dashboard/AdminDashboard"
+import Course from "./pages/admin/admin/courses/Course"
+
 // import Profileupdate from './pages/user/Course/Profile/Profileupdate';
 
 // import { useDispatch } from "react-redux";
@@ -37,6 +40,8 @@ import AllCourse from "./pages/home/AllCourse"
 
 
 const Routing = () => {
+  const [auth, setAuth] = useAuth();
+
   // const history = useNavigate();
   // const dispatch = useDispatch();
   // const user = "admin";
@@ -44,7 +49,6 @@ const Routing = () => {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />}>  </Route>
-      <Route path="/reg" element={<Reg />}>  </Route>
       <Route path="/library" element={<TeacherCard />}>  </Route>
       <Route path="/login" element={<Login />}>  </Route>
       <Route path="/ForgetPassword" element={<ForgetPassword />}>  </Route>
@@ -59,6 +63,26 @@ const Routing = () => {
         <Route path="all_course" element={<PurchaseByCategory />} />
         <Route path="Profile" element={<Profile />} />
       </Route>
+      <Route path="/admin/dashboard/*" element={<MainadminDashboard />}>
+        {/* <Route path='course' element={<Course />}> */}
+          {/* <Route path='course/AddCourse' element={<AddCourse />}></Route>
+          <Route path='course/ViewCourse' element={<ViewCourse />}></Route> */}
+        {/* </Route> */}
+        {/* <Route path='/Category' element={<Category />} >
+          <Route path='/Category/Addcategory' element={<AddCategory />}></Route>
+          <Route path='/Category/ViewCategory' element={<ViewCategory />}></Route>
+        </Route>
+        <Route path='/lesson' element={<Lesson />}>
+          <Route path='/lesson/AddLesson' element={<AddLesson />}></Route>
+          <Route path='/lesson/ViewLesson' element={<ViewLesson />}></Route>
+          <Route path='/lesson/ShowLesson' element={<ShowLesson />}></Route>
+        </Route>
+        <Route path='/lecture' element={<Lecture />}>
+          <Route path='/lecture/AddLecture' element={<AddLecture />}></Route>
+          <Route path='/lecture/ViewLecture' element={<ViewLecture />}></Route>
+        </Route> */}
+      </Route>
+
       <Route path="/ProfileUpdate" element={<Profileupdate />} />
       <Route path="/dashboard/Purchase/:id" element={<Curriculum />} />
       <Route path="/dashboard/Purchase/ByCourse/:id" element={<ByCourse />} />

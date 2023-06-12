@@ -9,6 +9,7 @@ const courseRoute = require("./routes/courseRoute");
 const adminRoute = require("./routes/adminRoute");
 const enrollRoute = require("./routes/enrollRoute");
 const commonRoute = require("./routes/commonRoute");
+const topicRoute = require("./routes/topicRoute");
 const cors = require('cors');
 
 
@@ -26,6 +27,7 @@ app.use("/api/v1", courseRoute);
 app.use("/api/v1", adminRoute);
 app.use("/api/v1", enrollRoute);
 app.use("/api/v1", commonRoute);
+app.use("/api/v1", topicRoute);
 
 
 // Middleware for Error
