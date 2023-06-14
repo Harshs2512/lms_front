@@ -31,6 +31,7 @@ import AllCourse from "./pages/home/AllCourse"
 import { useAuth } from "./context/auth";
 import AdminDashboard from "./pages/admin/admin/dashboard/AdminDashboard"
 import Course from "./pages/admin/admin/courses/Course"
+import VideoModel from './pages/user/Course/VideoModel/MycourseVideo';
 
 // import Profileupdate from './pages/user/Course/Profile/Profileupdate';
 
@@ -58,6 +59,7 @@ const Routing = () => {
       <Route path="/dashboard/*" element={<PrivateRoute />}>
         <Route path="" element={<DashBoard />} />
         <Route path="Mycourse" element={<Mycourse />} />
+        <Route path='Mycourse/64896cd8e73ed001b9447aa8/VideoModel' element={<VideoModel />} />
         <Route path="Purchase" element={<Purchase />} />
         <Route path="category" element={<PurchaseByCategory />} />
         <Route path="all_course" element={<PurchaseByCategory />} />
@@ -65,7 +67,7 @@ const Routing = () => {
       </Route>
       <Route path="/admin/dashboard/*" element={<MainadminDashboard />}>
         {/* <Route path='course' element={<Course />}> */}
-          {/* <Route path='course/AddCourse' element={<AddCourse />}></Route>
+        {/* <Route path='course/AddCourse' element={<AddCourse />}></Route>
           <Route path='course/ViewCourse' element={<ViewCourse />}></Route> */}
         {/* </Route> */}
         {/* <Route path='/Category' element={<Category />} >

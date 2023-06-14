@@ -27,6 +27,7 @@ import ViewLesson from "../admin/admin/lesson/ViewLesson"
 import Lecture from "../admin/admin/lecture/Lecture"
 import AddLecture from "../admin/admin/lecture/AddLecture"
 import ViewLecture from "../admin/admin/lecture/ViewLecture"
+import VideoModel from './Course/VideoModel/MycourseVideo';
 const UserDashBoard = () => {
 
 
@@ -42,34 +43,34 @@ const UserDashBoard = () => {
             </>
           )};
           {auth.user.role === "admin" && (
-           <>
-           <div className='flex h-screen'>
-            <Sidebar/>
-             <div className='w-[100%] h-screen overflow-auto scrollbar-hide '>
-               <Routes>
-                 <Route path='' element={<AdminDashboard />}></Route>
-                 <Route path='/course' element={<Course />}>
-                   <Route path='AddCourse' element={<AddCourse />}></Route>
-                   <Route path='ViewCourse' element={<ViewCourse />}></Route>
-                   <Route path='ViewCourse/UpdateCourse/:id' element={<UpdateCourse />}></Route>
-                 </Route>
-                  <Route path='/Category' element={<Category />} >
-                   <Route path='Addcategory' element={<AddCategory />}></Route>
-                   <Route path='ViewCategory' element={<ViewCategory />}></Route>
-                 </Route>
-                 <Route path='/lesson' element={<Lesson />}>
-                   <Route path='/lesson/AddLesson' element={<AddLesson />}></Route>
-                   <Route path='/lesson/ViewLesson' element={<ViewLesson />}></Route>
-                   <Route path='/lesson/ShowLesson' element={<ShowLesson />}></Route>
-                 </Route>
-                 <Route path='/lecture' element={<Lecture />}>
-                   <Route path='/lecture/AddLecture' element={<AddLecture />}></Route>
-                   <Route path='/lecture/ViewLecture' element={<ViewLecture />}></Route>
-                 </Route>
-               </Routes>
-             </div>
-           </div>
-         </>
+            <>
+              <div className='flex h-screen'>
+                <Sidebar />
+                <div className='w-[100%] h-screen overflow-auto scrollbar-hide '>
+                  <Routes>
+                    <Route path='' element={<AdminDashboard />}></Route>
+                    <Route path='/course' element={<Course />}>
+                      <Route path='AddCourse' element={<AddCourse />}></Route>
+                      <Route path='ViewCourse' element={<ViewCourse />}></Route>
+                      <Route path='ViewCourse/UpdateCourse/:id' element={<UpdateCourse />}></Route>
+                    </Route>
+                    <Route path='/Category' element={<Category />} >
+                      <Route path='Addcategory' element={<AddCategory />}></Route>
+                      <Route path='ViewCategory' element={<ViewCategory />}></Route>
+                    </Route>
+                    <Route path='/lesson' element={<Lesson />}>
+                      <Route path='/lesson/AddLesson' element={<AddLesson />}></Route>
+                      <Route path='/lesson/ViewLesson' element={<ViewLesson />}></Route>
+                      <Route path='/lesson/ShowLesson' element={<ShowLesson />}></Route>
+                    </Route>
+                    <Route path='/lecture' element={<Lecture />}>
+                      <Route path='/lecture/AddLecture' element={<AddLecture />}></Route>
+                      <Route path='/lecture/ViewLecture' element={<ViewLecture />}></Route>
+                    </Route>
+                  </Routes>
+                </div>
+              </div>
+            </>
           )}
         </div>
         <div className=''>
@@ -84,6 +85,7 @@ const UserDashBoard = () => {
                 <Route path="Purchase" element={<Purchase />} />
                 <Route path="category/:id" element={<PurchaseByCategory />} />
                 <Route path="Mycourse/:id" element={<MyviewCourse />} />
+                {/* <Route path='Mycourse/:id/VideoModel' element={<VideoModel />} /> */}
                 {/* <Route path="/Purchase/:id" element={<Curriculum />} /> */}
               </Routes>
             </>

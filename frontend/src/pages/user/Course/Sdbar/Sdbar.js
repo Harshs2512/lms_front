@@ -72,7 +72,7 @@ const Sdbar = () => {
 
   return (
     <>
-      <section className=" hidden sm:block fixed h-screen">
+      <section className=" hidden md:block fixed  h-screen">
         <div
           className={` bg-[#0f0333] min-h-screen ${open ? "w-52" : "w-16"
             } duration-500 text-gray-100 px-4`}

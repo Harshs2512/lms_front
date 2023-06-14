@@ -64,14 +64,14 @@ const Dashboard = () => {
               </div>
 
               {/* <!-- User Information --> */}
-              <div class="bg-blue-200 rounded shadow" onClick={getAllCourse}>
+              <div class="bg-blue-200 h-36 rounded shadow" onClick={getAllCourse}>
                 <Link to="Purchase"><div className="flex mt-4">
                   <div>
                     <i className=" text-blue-800">  <UilShare className="h-14 w-14  p-1 mt-7" /></i>
                   </div>
                   <div className="py-8 ml-2 text-blue-800">
                     <p>Course</p>
-                    <h2 class="text-lg font-bold mb-4">Purchase&nbsp;Course</h2>
+                    <h2 class="text-lg font-bold mb-4">Purchase Course</h2>
                   </div>
                   {/* <div className="mt-9  ml-2 text-center text-3xl font-bold"><h1>+25</h1></div> */}
 

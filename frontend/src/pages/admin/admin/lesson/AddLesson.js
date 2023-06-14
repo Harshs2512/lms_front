@@ -11,6 +11,7 @@ const AddCourse = () => {
   //const [categories, setCategories] = useState([]);
   const [title, setTitle] = useState("");
   const [discreption, setDiscreption] = useState("");
+  const [videos, setVideo] = useState("");
   const [thumnail_img, setThumnail_img] = useState("");
   //const [categoryId, setCategoryId] = useState("");
   const [courseId, setCourseId] = useState("");
@@ -63,7 +64,8 @@ const AddCourse = () => {
         title,
         discreption,
         thumnail_img,
-        courseId
+        courseId,
+        videos
       });
 
       if (data?.success) {
@@ -141,6 +143,21 @@ const AddCourse = () => {
                           className="w-full text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
                         />
                        </div>
+
+                       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6">
+                        <dt class="text-xl font-medium text-gray-500 mt-5">
+                          {user.email}
+                        </dt>
+                        <input
+                          type="text"
+                          value={videos}
+                          onChange={(e) => setVideo(e.target.value)}
+                          placeholder="Video URL"
+                          required
+                          className="w-full text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
+                        />
+                       </div>
+
                       {/* <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-xl font-medium text-gray-500 mt-5">
                           

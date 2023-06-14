@@ -85,7 +85,8 @@ const Header = () => {
 
   return (
     <>
-      {/* <nav className="fixed z-20 w-full py-1"> */}
+      <nav className="fixed z-20 w-full ">
+
         <div className="fixed z-20 w-full bg-[#040239] flex sm:px-6 md:py-2 lg:px-8 ">
           <div className="relative w-full flex h-12 items-center justify-between ">
             <div className="absolute w-full inset-y-0 left-0 flex justify-between  md:hidden ">
@@ -296,7 +297,7 @@ const Header = () => {
         {/* <!-- Mobile menu, show/hide based on menu state. --> */}
 
         <div
-          className="z-10  absolute h-screen duration-500 ease-in-out  md:hidden bg-[#040239]/80   text-center"
+          className="z-10  absolute w-screen h-screen duration-500 ease-in-out  md:hidden bg-[#040239]/80   text-center"
           id="mobile_menu"
           style={{ left: "-100%" }}
         >
@@ -523,7 +524,7 @@ const Header = () => {
         </div>
 
         {/* _____________________________________________________________ */}
-      {/* </nav> */}
+      </nav>
     </>
   )
 }

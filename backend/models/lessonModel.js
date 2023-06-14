@@ -18,7 +18,7 @@ const lessonSchema = mongoose.Schema({
         type: String,
         require: true
     }],
-    videos: [{ type: String }],
+    videos: { type: String },
 
 });
 

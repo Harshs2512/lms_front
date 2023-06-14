@@ -18,7 +18,7 @@ const ByCourse = () => {
         try {
             const { data } = await axios.get(`http://localhost:8000/api/v1/course/${param.id}`);
             setCourse(data.result);
-            // console.log(data.result);
+            console.log(data.result);
 
         } catch (error) {
             console.log(error);
@@ -33,7 +33,7 @@ const ByCourse = () => {
         {
             courseName: result && result.title,
             coursePrice: result && result.selling_price,
-            courseID: "6466031530f6f213f9fe4a1e"
+            courseID: result && result._id,
         }
     ]
     const paymentInfo = {

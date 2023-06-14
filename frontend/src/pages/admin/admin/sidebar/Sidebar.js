@@ -72,10 +72,10 @@ export default function Sidebar() {
               <li><UilBookOpen/></li>
              <NavLink to='lesson' className='-mt-5'>Lesson</NavLink>
             </li>
-            <li className='  flex  gap-2'>
+            {/* <li className='  flex  gap-2'>
               <li><UilPresentationCheck/></li>
              <NavLink to='lecture' className='-mt-5'>Lecture</NavLink>
-            </li>
+            </li> */}
             {/* <li className='  flex  gap-2'>
               <li><UilUsersAlt/></li>
              <NavLink to='student' className='-mt-5'>Student</NavLink>
