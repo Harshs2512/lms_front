@@ -51,7 +51,7 @@ exports.createTopic = (async (req, res, next) => {
 // Create Topic
 exports.AllTopicsByLessonId = (async (req, res, next) => {
     try {
-        const topic = await Topic.find();
+        const topic = await Topic.find({lessonId:req.params.id});
         res.status(200).send({ success: true, topic });
     } catch (error) {
         res.status(400).send({ success: false, msg: error.message });

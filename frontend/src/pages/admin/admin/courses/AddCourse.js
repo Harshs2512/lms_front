@@ -73,7 +73,7 @@ const AddCourse = () => {
 
   return (
     <>
-      <div className='shadow-xl w-96 mx-auto  rounded-xl text-center mt-5 border border-heading'>
+      <div className='shadow-xl w-3/5 mx-auto  rounded-xl text-center mt-5 border border-heading'>
         <form onSubmit={handleCreate}>
           <div class="border-t border-gray-200">
             <dl>
@@ -88,9 +88,9 @@ const AddCourse = () => {
                   placeholder="Select category"
                   size="large"
                   showSearch
-                  className="form-select mb-3 border border-1"
+                  className="form-select w-full border border-1"
                   onChange={(value) => {
-                    setCategoryId(value);
+                    setCategoryId(value)
                   }}
                 >
                   {categories?.map((c) => (
@@ -101,8 +101,7 @@ const AddCourse = () => {
                 </Select>
               </div>
 
-
-              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6">
                 <dt class="text-xl font-medium text-gray-500 mt-5">
                   {user.email}
                 </dt>
@@ -119,7 +118,7 @@ const AddCourse = () => {
               </div>
 
 
-              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6">
                 <dt class="text-xl font-medium text-gray-500 mt-5">
 
                 </dt>
@@ -136,7 +135,7 @@ const AddCourse = () => {
               </div>
 
 
-              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6">
                 <dt class="text-xl font-medium text-gray-500 mt-5">
                   {user.email}
                 </dt>
@@ -151,7 +150,7 @@ const AddCourse = () => {
                   className="w-full text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
                 />
               </div>
-              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6">
                 <dt class="text-xl font-medium text-gray-500 mt-5">
                   {user.email}
                 </dt>
@@ -166,7 +165,7 @@ const AddCourse = () => {
                   className="w-full text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
                 />
               </div>
-              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6">
                 <dt class="text-xl font-medium text-gray-500 mt-5">
                   {user.email}
                 </dt>
@@ -181,7 +180,7 @@ const AddCourse = () => {
                   className="w-full text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
                 />
               </div>
-              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6">
                 <dt class="text-xl font-medium text-gray-500 mt-5">
 
                 </dt>
@@ -226,4 +225,4 @@ const AddCourse = () => {
   )
 }
 
-export default AddCourse;
+export default AddCourse

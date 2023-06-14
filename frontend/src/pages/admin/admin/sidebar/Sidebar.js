@@ -48,42 +48,41 @@ export default function Sidebar() {
 
   return (
     <>
-    <div  className='hidden sm:block h-screen  shadow-md overflow-hidden bg-darkblue transition delay-100 duartion-500 ease-in-out ' id='sideNav'
+    <div  className='hidden sm:block h-screen shadow-md overflow-hidden text-white bg-[#040239] transition delay-100 duartion-500 ease-in-out ' id='sideNav'
     style={{
       'width':'25',
       
     }}
     >
       <UilListUiAlt className='text-white cursor-pointer float-right ' onClick={openSideMenu} id='sideMenuIcon'/>
-        {/* <img src={'https://cybrom.com/wp-content/uploads/2023/04/Logo-for-website-1.png'}></img> */}
-        <ul className='mt-20 leading-[50px] text-heading  '>
+        <ul className='mt-20 px-20 mr-10 pt-10 leading-[70px]'>
             <li className='  flex  gap-2'>
               <li><UilChart/></li>
-             <NavLink to='/dashboard' className='-mt-2'>Dashboard</NavLink>
+             <NavLink to='/dashboard' className='-mt-5 text-white'>Dashboard</NavLink>
             </li>
             <li className='  flex  gap-2'>
               <li><UilCreateDashboard/></li>
-             <NavLink to='Category' className='-mt-2'>Category</NavLink>
+             <NavLink to='Category' className='-mt-5'>Category</NavLink>
             </li>
             <li className='  flex  gap-2'>
               <li><UilBook/></li>
-             <NavLink to='course' className='-mt-2'>Course</NavLink>
+             <NavLink to='course' className='-mt-5'>Course</NavLink>
             </li>
             <li className='  flex  gap-2'>
               <li><UilBookOpen/></li>
-             <NavLink to='lesson' className='-mt-2'>Lesson</NavLink>
+             <NavLink to='lesson' className='-mt-5'>Lesson</NavLink>
             </li>
             <li className='  flex  gap-2'>
               <li><UilPresentationCheck/></li>
-             <NavLink to='lecture' className='-mt-2'>Lecture</NavLink>
+             <NavLink to='lecture' className='-mt-5'>Lecture</NavLink>
             </li>
-            <li className='  flex  gap-2'>
+            {/* <li className='  flex  gap-2'>
               <li><UilUsersAlt/></li>
-             <NavLink to='student' className='-mt-2'>Student</NavLink>
-            </li>
+             <NavLink to='student' className='-mt-5'>Student</NavLink>
+            </li> */}
             <li className='  flex  gap-2'>
               <li><UilSignOutAlt/></li>
-             <NavLink onClick={handleLogout} className='-mt-2'>Logout</NavLink>
+             <NavLink onClick={handleLogout} className='-mt-5'>Logout</NavLink>
             </li>
         </ul>
 

@@ -1,33 +1,35 @@
 import React, { useState, useEffect, } from "react";
-import {useParams } from "react-router-dom"
-import { UilEditAlt,UilTrashAlt,UilEye } from '@iconscout/react-unicons'
+import { useParams } from "react-router-dom"
+import { UilEditAlt, UilTrashAlt, UilEye } from '@iconscout/react-unicons'
 import axios from "axios";
 import { Link, Outlet, NavLink } from "react-router-dom";
 import { UilShare } from '@iconscout/react-unicons';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { UilNotebooks,UilBookOpen,UilTable,UilClock,UilPlay,UilRupeeSign } from '@iconscout/react-unicons'
+import { UilNotebooks, UilBookOpen, UilTable, UilClock, UilPlay, UilRupeeSign } from '@iconscout/react-unicons'
 
 
-  const ViewCourse =  () => {
-    const param = useParams();
+const ViewCourse = () => {
+  const param = useParams();
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
-  // const [Category, setCategory] = useState([]);
+  const [category, setCategory] = useState([]);
   // const [catName, setName] = useState("");
   // const [visible, setVisible] = useState(false);
   // const [selected, setSelected]= useState(null);
   // const [id, setId] = useState("");
   const [result, setCourse] = useState();
 
-  
+
 
   //get all courses
   const getAllCourses = async () => {
     try {
       const { data } = await axios.get("http://localhost:8000/api/v1/courses/");
       setCourses(data.courses)
-      console.log(data.courses)
+
+      // console.log("this is a all data",data.courses.Object.values(courseId))
+
     } catch (error) {
       console.log(error);
       toast.error("Something Went Wrong");
@@ -39,68 +41,72 @@ import { UilNotebooks,UilBookOpen,UilTable,UilClock,UilPlay,UilRupeeSign } from 
     getAllCourses();
   }, []);
 
- 
 
-// Delete Course
-const handleDelete = async (id) => {
-  
-  try {
-    const { data } = await axios.delete(
-      `http://localhost:8000/api/v1/course/${id}`,
 
-    );
-    getAllCourses()
-    toast.success("Course Deleted Successfully");
-    //navigate("/dashboard/admin/products");
-  } catch (error) {
-    console.log(error);
-    toast.error("Something went wrong");
-  }
-};
+  // Delete Course
+  const handleDelete = async (id) => {
+
+    try {
+      const { data } = await axios.delete(
+        `http://localhost:8000/api/v1/course/${id}`,
+
+      );
+      getAllCourses()
+      toast.success("Course Deleted Successfully");
+      //navigate("/dashboard/admin/products");
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  };
   return (
 
-    
+
     <div className=' w-full  p-10 '>
-    <table className=' w-full border border-1 '>
-    
+      <table className=' w-full border border-1 '>
+
         <thead className='bg-blue-900 text-heading '>
-        
-            <tr className='flex justify-between  border border-1 p-2'>
-                <td className=''>Sr no</td>
-                <td className=''> Course Name</td>
-                {/* <td className=''>Category Name</td> */}
-                <td className=''>Selling Price</td>
-                <td className=''>Discounted Price</td>
-                <td className=''>Duration</td>
-                {/* <td className=''>Description</td> */}
-                <td className=''>Action</td>
-            </tr>
+
+          <tr className='flex justify-between  border border-1 p-2'>
+            <td className=''>Sr no</td>
+            <td className=''> Course Name</td>
+            <td className=''>Category Name</td>
+            <td className=''>Selling Price</td>
+            <td className=''>Discounted Price</td>
+            <td className=''>Duration</td>
+            {/* <td className=''>Description</td> */}
+            <td className=''>Action</td>
+          </tr>
         </thead>
         <tbody className=''>
-        {courses?.map((p,index) => (
-  <>
-            <tr className='flex justify-between  border border-1 p-2  ' >
+          {courses && courses?.map((p, index) => (
+            <>
+              <tr key={p._id} className='flex justify-between  border border-1 p-2  ' >
                 <td>{index + 1}</td>
                 <td>{p.title}</td>
-                {/* <td>{p.categoryId}</td> */}
+                {/* {courses.categoryId.map((c, i) => 
+                
+                <td key={c._id}>{c.catName}</td>
+                   )}   */}
+                
                 <td>{p.selling_price}</td>
                 <td>{p.discounted_price}</td>
                 <td>{p.duration}</td>
                 <td className='flex gap-1'>
-                <button className='bg-gray-900 text-white rounded-md text-[12px] px-1'
-                  ><Link to={"UpdateCourse/"+(p._id)}>2222<UilEditAlt/></Link></button>
+                  <button className='bg-gray-900 text-white rounded-md text-[12px] px-1'
+                  ><Link to={"UpdateCourse/" + (p._id)}>2222<UilEditAlt /></Link></button>
                   {/* <button className='bg-gray text-white rounded-md text-[12px] px-1'
                   onClick={handleDelete}><UilTrashAlt/></button> */}
-                   <button className='bg-gray-900 text-white rounded-md text-[12px] px-1' onClick={() => {
-                              handleDelete(p._id);
-                            }}><UilTrashAlt/></button>
-                  
+                  <button className='bg-gray-900 text-white rounded-md text-[12px] px-1' onClick={() => {
+                    handleDelete(p._id);
+                  }}><UilTrashAlt /></button>
+
                 </td>
-            </tr> 
-              </>
-        ))} 
-        </tbody> 
-       
+              </tr>
+            </>
+          ))}
+        </tbody>
+
       </table>
       {/* <Modal
               onCancel={() => setVisible(false)}
@@ -113,17 +119,17 @@ const handleDelete = async (id) => {
                 handleSubmit={handleUpdate}
               />
             </Modal> */}
-      <ToastContainer/>
+      <ToastContainer />
     </div>
-    
-  )
-} 
+
+  )
+}
 
 export default ViewCourse;
 
 
 
-    
+
 
 {/* <div className='py-8 '>
 <div class="bg-red-100 p-2">

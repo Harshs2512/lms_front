@@ -53,8 +53,8 @@ exports.createCourse = catchAsyncErrors(async (req, res, next) => {
 
 // Get all data
 exports.getAllCourses = catchAsyncErrors(async (req, res) => {
-    const courses = await Course.find();
-    // console.log(courses,"kkkkk")
+    const courses = await Course.find().populate('categoryId', '[catName]');
+    console.log(courses,"kkkkk")
 
     // const count_data = [];
     // const lessonCount = await Lesson.find().count();

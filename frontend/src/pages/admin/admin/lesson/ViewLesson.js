@@ -45,7 +45,7 @@ import { UilNotebooks,UilBookOpen,UilTable,UilClock,UilPlay,UilRupeeSign } from 
     try {
       const { data } = await axios.get("http://localhost:8000/api/v1/show_lesson/");
       setLesson(data.lesson)
-      //console.log(data.courses[0].reviews[0].name)
+      console.log(data.lesson)
     } catch (error) {
       console.log(error);
       toast.error("Something Went Wrong");
@@ -63,12 +63,8 @@ import { UilNotebooks,UilBookOpen,UilTable,UilClock,UilPlay,UilRupeeSign } from 
 const handleDelete = async (id) => {
   
   try {
-    let answer = window.prompt("If you want to delete this course please type anything ? ");
-    if (!answer) return;
-    console.log(id)
     const { data } = await axios.delete(
       `http://localhost:8000/api/v1/lesson/${id}`,
-
     );
     getAllLesson()
 
@@ -89,7 +85,7 @@ const handleDelete = async (id) => {
         
             <tr className='flex justify-between  border border-1 p-2'>
                 <td className=''>Sr no</td>
-                <td className=''> Course Name</td>
+                {/* <td className=''> Course Name</td> */}
                 <td className=''>Leeson Name</td>
                 <td className=''>Description</td>
                 <td className=''>Action</td>
@@ -109,15 +105,15 @@ const handleDelete = async (id) => {
                
                 <td>{p.discreption}</td>
                 <td className='flex gap-1'>
-                  <button className='bg-gray text-white rounded-md text-[12px] px-1'
+                  <button className='bg-gray-900 text-white rounded-md text-[12px] px-1'
                   ><UilEditAlt/></button>
                   {/* <button className='bg-gray text-white rounded-md text-[12px] px-1'
                   onClick={handleDelete}><UilTrashAlt/></button> */}
-                   <button className='bg-gray text-white rounded-md text-[12px] px-1' 
+                   <button className='bg-gray-900 text-white rounded-md text-[12px] px-1' 
                     onClick={() => {
                       handleDelete(p._id);
                     }}><UilTrashAlt/></button>
-                   <button className='bg-gray text-white rounded-md text-[12px] px-1'><Link to='/lesson/ShowLesson'><UilEye/></Link></button>
+                   <button className='bg-gray-900 text-white rounded-md text-[12px] px-1'><Link to='/dashboard/lesson/showlesson'><UilEye/></Link></button>
                 </td>
             </tr> 
             

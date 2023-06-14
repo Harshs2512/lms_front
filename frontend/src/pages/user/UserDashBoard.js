@@ -70,8 +70,7 @@ const UserDashBoard = () => {
              </div>
            </div>
          </>
-          )};
-
+          )}
         </div>
         <div className=''>
           {auth.user.role === "user" && (
@@ -88,8 +87,7 @@ const UserDashBoard = () => {
                 {/* <Route path="/Purchase/:id" element={<Curriculum />} /> */}
               </Routes>
             </>
-          )};
-
+          )}
         </div>
       </div>
     </>

@@ -14,17 +14,10 @@ export default function MyviewCourse() {
   const [topic, setTopic] = useState();
   const [firstlesson, setFirstlesson] = useState();
   const param = useParams();
+  const navigate = useNavigate();
 
 
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
-  const toggleAccordions = () => {
-    setIsOpens(!isOpens);
-  };
-  const toggleAccordiones = () => {
-    setIsOpenes(!isOpenes);
-  };
+
 
 
   const lessonData = async () => {
@@ -32,13 +25,36 @@ export default function MyviewCourse() {
     try {
       const { data } = await axios.get(`http://localhost:8000/api/v1/lesson/${param.id}`);
       setLesssons(data.lessons);
-      console.log(data.lessons);
+      // console.log(data.lessons);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
     };
   };
 
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
+  const toggleAccordions = () => {
+
+    const lessonData1 = async () => {
+      // console.log(auth.token)
+      try {
+        const { data } = await axios.get(`http://localhost:8000/api/v1/lesson/${param.id}`);
+        setLesssons(data.lessons);
+        console.log(data.lessons);
+        navigate(`/dashboard/Mycourse/sdf`)
+      } catch (error) {
+        console.log(error);
+        toast.error("Something went wrong");
+      };
+    };
+    lessonData1()
+    setIsOpens(!isOpens);
+  };
+  const toggleAccordiones = () => {
+    setIsOpenes(!isOpenes);
+  };
 
   const firstLesson = async () => {
     try {
@@ -52,7 +68,7 @@ export default function MyviewCourse() {
 
   const topics = async () => {
     try {
-      const { data } = await axios.get("http://localhost:8000/api/v1/topic/new");
+      const { data } = await axios.get("http://localhost:8000/api/v1/topic/64843131755a0ad081db496e");
       setTopic(data.topic);
       console.log(data.topic);
     } catch (error) {
@@ -98,7 +114,7 @@ export default function MyviewCourse() {
               {firstlesson && firstlesson.map((l) => (
                 <p className=' mt-4 text-[15px] text-gray-600 px-6 font-semibold'>{l.discreption}</p>
               ))}
-              </div>
+            </div>
           </div>
 
         </div>

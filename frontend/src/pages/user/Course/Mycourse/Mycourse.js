@@ -91,14 +91,13 @@ export default function Mycourse() {
                   <div className='' >
                     <h1 className='text-center text-slate-500 text-xl font-semibold mt-5'>You Don't have Course</h1>
                     <div className='w-full flex justify-center mt-5'>
-                      <button className=' border-2  text-white  p-4     rounded-sm font-semibold bg-gray-900' ><Link to="/dashboard/Purchase">Browse Course</Link></button>
+                      <button className=' border-2  text-white  p-4 rounded-sm font-semibold bg-gray-900' ><Link to="/dashboard/Purchase">Browse Course</Link></button>
                     </div>
                   </div>
                 </div>
               </div>
              </>
             )}
-             
           </div>
         </div>
       </div>
