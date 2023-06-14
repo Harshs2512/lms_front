@@ -31,7 +31,7 @@ const Sdbar = () => {
   }, [])
 
   const [category, setCategory] = useState([]);
-  const [close, Setopen] = useState(false)
+  const [close, setClose] = useState(false)
   const [opens, Setclose] = useState(false)
   const [Opens, Sclose] = useState(false)
   const [open, setOpen] = useState(true);
@@ -39,6 +39,18 @@ const Sdbar = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  
+  const showAvailableCourse = () => {
+    let available_course1 = document.getElementById("available_course");
+    console.log(available_course1.style.height)
+    // available_course.style.display="none"
+    if (available_course1.style.height == "0px") {
+      available_course1.style.color = "red";
+    } else {
+      available_course1.style.height = "0px";
+    }
+  };
 
 
   const handleLogout = async (e) => {
@@ -112,15 +124,15 @@ const Sdbar = () => {
                   >
                     <span
                       className="flex -mt-8 text-left text-[12px]"
-
+                      onClick={showAvailableCourse}
                     >
                       Category<AiFillCaretUp className={` cursor-pointer ml-4 mt-2 w-7 text-white  ${!close && "rotate-180"}`}
-                        onClick={() => Setopen(!close)} />
+                        onClick={() => setClose(!close)} />
                     </span>
                   </a>
                   <ul
                     id="available_course"
-                    className=" text-[12px] overflow-hidden duration-500 -mt-8">
+                    className=" text-[12px]">
                     {category?.map((c) => (
                       <div key={c._id}>
                         <Link to={`category/${c._id}`}>
