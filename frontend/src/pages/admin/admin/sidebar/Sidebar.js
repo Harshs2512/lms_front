@@ -48,7 +48,7 @@ export default function Sidebar() {
 
   return (
     <>
-    <div  className='hidden sm:block h-screen shadow-md overflow-hidden text-white bg-[#040239] transition delay-100 duartion-500 ease-in-out ' id='sideNav'
+    <div  className='hidden md:block h-screen shadow-md overflow-hidden text-white bg-[#040239] transition delay-100 duartion-500 ease-in-out ' id='sideNav'
     style={{
       'width':'25',
       

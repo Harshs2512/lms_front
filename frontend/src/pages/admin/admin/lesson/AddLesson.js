@@ -95,10 +95,10 @@ const AddCourse = () => {
                         <Select
                           required
                           bordered={false}
-                          placeholder="Select Lesson"
+                          placeholder="Select Course"
                           size="large"
                           showSearch
-                          className="form-select mb-3 border border-1"
+                          className="form-select text-stone-900 mb-3 border border-1"
                           onChange={(value) => {
                             setCourseId(value);
                           }}

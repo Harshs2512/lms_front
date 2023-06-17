@@ -46,7 +46,7 @@ const Login = () => {
     <>
       <div className=" ">
         <div className="flex justify-center  ">
-          <div className="block md:flex  justify-center h-[32rem] w-[60rem] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.8)] md:mt-32 mt-10 bg-white py-5">
+          <div className="block md:flex justify-center h-[32rem] w-[60rem] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.8)] md:mt-32 mt-10 bg-white py-5">
             <div className="mt-6  ">
               <h1 className=" text-center text-4xl tracking-widest text-blue-900 font-bold ">
                 Welcome to <span className="text-red-900">Cybrom</span>

@@ -95,6 +95,53 @@ const Header = () => {
                   <UilListUl className="block md:hidden text-white" />
                 </button>
               </div>
+             
+              {/* <div className="text-white flex justify-end mr-8">
+              <li className=" block">
+                                <UilUserCircle
+                                  onClick={toggleMenu}
+                                  className="cursor-pointer text-white w-6 h-6 mt-4"
+                                />
+                                <div className="relative" id="userPopup">
+                                  {isOpen && (
+                                    <div className="absolute bg-gradient-to-tr from-blue-100 to-blue-900 p-2 w-64 text-[#0f0333]  top-full -left-52 py-6  mt-4 rounded-md shadow-xl">
+                                      <div class="max-w-xs">
+                                        <div class=" bg-transparent shadow-xl rounded-lg py-3">
+                                          <div class="photo-wrapper p-2">
+                                            <img
+                                              class="w-32 h-32 rounded-full mx-auto"
+                                              src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"
+                                              alt={auth.user.name}
+                                            />
+                                          </div>
+                                          <div class="p-2">
+                                            <h2 class="text-center text-sm text-white font-medium leading-8">
+                                              {auth.user.name}
+                                            </h2>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="mt-2 border-b border-black">
+                                        <Link to="dashboard/Profile" className=" gap-2 py-1 flex  hover:bg-gray-200">
+                                          <UilUserCircle /> Profile
+                                        </Link>
+                                        <Link
+                                          to="/dashboard"
+                                          className="gap-2 py-1 flex  hover:bg-gray-200 "
+                                        >
+                                          <UilCreateDashboard />
+                                          Go To Dashboard
+                                        </Link>
+                                        <Link to="/Login" className="gap-2 py-1 flex hover:bg-gray-200" onClick={handleLogout
+                                        }>
+                                          <UilSignOutAlt /> Sign Out
+                                        </Link>
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+                              </li>
+              </div> */}
             </div>
             <div className="flex flex-1 items-center  sm:items-stretch justify-start">
               <div className="hidden md:block lg:mt-1 md:mt-1  w-full">
@@ -151,7 +198,7 @@ const Header = () => {
                             />
                           </Link>
                         </li>
-                        <li className="text-white hover:bg-[#0f0c5c] hover:text-white rounded-md px-3 py-2 text-lg hover:border-b-2 border-white  font-medium">
+                        <li className="text-white   rounded-md px-3 py-2 text-lg hover:border-b-2 border-white  font-medium">
                           <NavLink
                             onClick={toggleClose}
                             to="/dashboard"
@@ -237,7 +284,7 @@ const Header = () => {
                                 </div>
                               </li>
 
-                              <li className=" block">
+                              <li className=" block z-120">
                                 <UilUserCircle
                                   onClick={toggleMenu}
                                   className="cursor-pointer text-white w-10 h-10"
@@ -328,38 +375,44 @@ const Header = () => {
               </>
             </ul>
           ) : (
-            <ul className="block space-y-4">
+            <ul className="block space-y-4 ">
               {auth.user.role === "admin" && (
                 <>
-                  <li className="text-white hover:bg-[#0f0c5c] hover:text-white rounded-md px-3 py-2 text-lg hover:border-b-2 border-white  font-medium">
-                    <NavLink onClick={toggleClose} to="/admin/teacher-info">
-                      board
+                      <li className="mt-12 flex justify-center">
+                  <img
+                    src="https://cybrom.com/wp-content/uploads/2023/04/Logo-for-website-1.png"
+                    className="w-24 h-14"
+                  />
+                </li>
+                  <li className="text-white   rounded-md px-3 py-2 text-lg   font-medium">
+                    <NavLink onClick={toggleClose} to="/dashboard">
+                    Dashboard
                     </NavLink>
                   </li>
-                  <li className="text-white hover:bg-[#0f0c5c] hover:text-white rounded-md px-3 py-2 text-lg hover:border-b-2 border-white  font-medium">
-                    <NavLink onClick={toggleClose} to="/admin/course-info">
-                      Course-Info
+                  <li className="text-white   rounded-md px-3 py-2 text-lg   font-medium">
+                    <NavLink onClick={toggleClose} to="category">
+                    Category
                     </NavLink>
                   </li>
-                  <li className="text-white hover:bg-[#0f0c5c] hover:text-white rounded-md px-3 py-2 text-lg hover:border-b-2 border-white  font-medium">
-                    <NavLink onClick={toggleClose} to="/admin/student-info">
-                      Student-Info
+                  <li className="text-white  rounded-md px-3 py-2 text-lg   font-medium">
+                    <NavLink onClick={toggleClose} to="course">
+                    Course
                     </NavLink>
                   </li>
-                  <li className="text-white hover:bg-[#0f0c5c] hover:text-white rounded-md px-3 py-2 text-lg hover:border-b-2 border-white  font-medium">
-                    <NavLink onClick={toggleClose} to="/admin/teacher-info">
-                      Teacher-Info
+                  <li className="text-white  
+                   rounded-md px-3 py-2 text-lg  font-medium">
+                    <NavLink onClick={toggleClose} to="Lesson">
+                    Lesson
                     </NavLink>
                   </li>
                   <li className="">
                     <button
-                      className="bg-blue-500 px-8 tracking-widest py-1 md:py-2 text-lg hover:border-b-2 border-white  font-medium rounded-md text-white"
+                      className="bg-blue-500 px-8 tracking-widest py-1 md:py-2 text-lg  font-medium rounded-md text-white"
                       onClick={handleLogout}
                     >
                       <Link to="/Login">Logout</Link>
                     </button>
                   </li>
-                  <Search />
                 </>
               )}
               {auth.user.role === "user" && (
@@ -432,7 +485,7 @@ const Header = () => {
                           }`}
                       >
                         <Link
-                          to="#"
+                          to="/dashbord/"
                           onClick={openmobile}
                           className=" items-center p-2  rounded-lg dark:text-white"
                         >
@@ -466,9 +519,7 @@ const Header = () => {
                       </span>
                     </li>
 
-                    {/* <!-------END HTML---------> */}
-
-                    {/* <!------CSS course----> */}
+                  
 
                     <li className="flex gap-x-2 text-white ">
                       <i
@@ -481,7 +532,7 @@ const Header = () => {
                           className={`text-white origin-left font-medium text-lg duration-200 ${!open && "scale-0"
                             }`}
                         >
-                          Course Category
+                          All Course
                         </h1>
                       </Link>
                     </li>

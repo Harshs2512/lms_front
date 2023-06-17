@@ -27,8 +27,8 @@ const Dashboard = () => {
 
   return (
       <>
-    <div className=" w-full  h-full flex justify-center   ">
-        <div className="md:ml-[12.5rem] ml-0 mt-16 scrollbar-hide bg-slate-100  ">
+    {/* <div className=" w-full  h-full flex justify-center   "> */}
+        <div className="md:ml-[12.5rem] ml-3 mt-12 lg:mt-16 scrollbar-hide bg-slate-100  ">
           <div className="bg-gray-200 py-4 w-full">
             <h1 className="text-2xl text-gray-800">User Dashboard</h1>
           </div>
@@ -49,7 +49,7 @@ const Dashboard = () => {
               </div>
               {/* 
         <!-- Progress Tracker --> */}
-              <div className="bg-red-100 h-36 p-4 rounded shadow">
+              <div className="bg-red-100 h-36 rounded shadow">
                 <Link to="Mycourse"><div className="flex">
                   <div>
                     <i className=" text-red-800">  <UilNotebooks className="h-14 w-14  p-1 mt-7" /></i>
@@ -58,7 +58,7 @@ const Dashboard = () => {
                     <p>Course</p>
                     <h2 className="text-lg font-bold mb-4">My Coures</h2>
                   </div>
-                  {/* <div className="mt-9  ml-2 text-center text-3xl font-bold"><h1>+235</h1></div> */}
+                    {/* <div className="mt-9  ml-2 text-center text-3xl font-bold"><h1>+235</h1></div> */}
 
                 </div></Link>
 
@@ -116,7 +116,7 @@ const Dashboard = () => {
             </div>
           </section>
         </div>
-        </div>
+        {/* </div> */}
       </>
   )
 

@@ -62,6 +62,7 @@ const AddCourse = () => {
         // }, 1000);
         console.log(data)
       } else {
+        console.log("test")
         toast.info("Course is Already Exist");
         // navigate("/dashboard/admin/products");
       }
@@ -78,17 +79,15 @@ const AddCourse = () => {
           <div class="border-t border-gray-200">
             <dl>
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-xl font-medium text-gray-500 mt-5">
-
+                <dt class="text-xl font-medium text-gray-900 mt-5">
                 </dt>
-
                 <Select
                   required
                   bordered={false}
                   placeholder="Select category"
                   size="large"
                   showSearch
-                  className="form-select w-full border border-1"
+                  className="form-select text-slate-800 w-full border border-1"
                   onChange={(value) => {
                     setCategoryId(value)
                   }}
@@ -102,7 +101,7 @@ const AddCourse = () => {
               </div>
 
               <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6">
-                <dt class="text-xl font-medium text-gray-500 mt-5">
+                <dt class="text-xl font-medium text-gray-900 mt-5">
                   {user.email}
                 </dt>
                 <input

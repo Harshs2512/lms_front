@@ -54,7 +54,7 @@ const Profile = () => {
 
       if (data?.errro) {
         console.log("kkr")
-        toast.error(data?.error);
+        toast.error("jhrtrwewq");
       } else {
         console.log("kkb")
         setAuth({ ...auth, user: data?.updatedUser });
@@ -83,13 +83,13 @@ const Profile = () => {
     <>
       {isLoading === false && <div className='flex'>
         <div>
-          <div className=" scrollbar-hide ml-0 mt-16 md:ml-40 lg:w-[70rem]">
+          <div className=" scrollbar-hide ml-0 w-full mt-16 md:ml-40 lg:w-[69rem]">
             <div className=" bg-gradient-to-tr from-red-200 to-blue-800 ">
               <div class="bg-gray-200 p-5">
                 <h1 class="text-2xl text-gray-800">User Dashboard</h1>
               </div>
             </div>
-            <div className='md:px-60'>
+            <div className='md:px-60 px-0'>
               {!show && <div className=" md:w-auto w-96">
                 <div className="bg-white mt-4 shadow overflow-hidden sm:rounded-lg  border border-black md:px-10">
                   <div className="px-5 mt-12 flex justify-center rounded-lg">
@@ -112,12 +112,12 @@ const Profile = () => {
               </div>
               }
               {show && <div className='w-full'>
-                <div className="bg-white mx-auto border border-black mt-4 shadow overflow-hidden sm:rounded-lg">
-                  <div className="px-5 mt-12 ml-12 rounded-lg flex">
-                    <div className='text-2xl font-semibold'>
+                <div className="bg-white  w-full border border-black mt-4  shadow overflow-hidden sm:rounded-lg">
+                  <div className="px-5 mt-12 md:first-letter:ml-12   ml-0 rounded-lg  md:flex block">
+                    <div className='text-2xl font-semibold '>
                       <label htmlFor="">Profile Image</label>
                     </div>
-                    <div className='ml-10'>
+                    <div className='md:ml-10 ml-0 '>
                       <input type="file" className='h-20' />
                     </div>
                   </div>
@@ -131,7 +131,7 @@ const Profile = () => {
                             placeholder="Enter Your Name"
                             required
                             onChange={(e) => setName(e.target.value)}
-                            className="w-45 text-center text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
+                            className="w-40 text-center text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
                           />
                         </div>
                         <div className="bg-white px-4 py-5  sm:gap-4 sm:px-6">
@@ -141,12 +141,12 @@ const Profile = () => {
                             placeholder="Enter Your Email"
                             required
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-45 text-center text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
+                            className="w-40 text-center text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
                           />
                         </div>
-                        <div className="mt-5 text-center mb-4 md:space-x-3 md:block flex flex-col-reverse">
-                          <button className="mb-2 md:mb-0 bg-blue-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-blue-500" onClick={() => setShowform(!show)}>Back</button>
-                          <button className="mb-2 md:mb-0 bg-blue-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-blue-500">Update</button>
+                        <div className="mt-5 text-center mb-4 md:space-x-3 block">
+                          <button className="mb-2 w-40 md:mb-0 bg-blue-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-blue-500" onClick={() => setShowform(!show)}>Back</button>
+                          <button className="mb-2 w-40 md:mb-0 bg-blue-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-blue-500">Update</button>
                         </div>
                       </dl>
                     </div>
@@ -161,7 +161,7 @@ const Profile = () => {
       {isLoading === true && <div className='flex'>
         <div>
         <SkeletonTheme />
-          <div className=" scrollbar-hide ml-0 mt-10 md:ml-40 lg:w-[70rem]">
+          <div className="scrollbar-hide ml-0 mt-10 md:ml-40 lg:w-[70rem]">
               <h1 className=' w-full p-6 ml-5'><Skeleton className='p-10' /></h1>
             <div className='md:px-60'>
               {!show && <div className=" md:w-auto w-96">
@@ -220,7 +220,7 @@ const Profile = () => {
                           />
                         </div>
                         <div className="mt-5 text-center mb-4 md:space-x-3 md:block flex flex-col-reverse">
-                          <button className="mb-2 md:mb-0 bg-blue-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-blue-500" onClick={() => setShowform(!show)}>Back</button>
+                          <button className="mb-2 md:mb-0 bg-blue-400 px-1 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-blue-500" onClick={() => setShowform(!show)}>Back</button>
                           <button className="mb-2 md:mb-0 bg-blue-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-blue-500"><Skeleton/></button>
                         </div>
                       </dl>

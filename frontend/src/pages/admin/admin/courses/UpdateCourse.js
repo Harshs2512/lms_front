@@ -31,12 +31,13 @@ const UpdateCourse =  () => {
       setDescription(data.result.description); 
       setCategoryId(data.result.category._id);
       setThumnail_img(data.result.thumnail_img);
-      // console.log(data.result);
+      console.log(data.result);
       
     } catch (error) {
       console.log(error);
       toast.error(error);
     }
+    
   };
  
   //get all cat
@@ -57,68 +58,56 @@ useEffect(() => {
 
 // get single course
 const courseData = {
-  title:"wweewe",
-  selling_price:"200",
-  discounted_price:"3333",
-  duration:"4 month",
-  description:"DSSASDDVFSDASDSFA",
-
+  title,
+  selling_price,
+  discounted_price,
+  duration,
+  description,
+  categoryId,
 };
 
 
 //   update course
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    try {
-      console.log("chal gaya",courseData);
-
-      // const coursetData = new FormData();
+ const handleUpdate = async (e) => {
+  e.preventDefault();
+  try {
+    const { data } = await axios.put(
+      `http://localhost:8000/api/v1/course/${param.id}/`,
+      courseData
+    );
+    
+     if (data?.success) {
+      toast.success(`${courseData} Updated Successfully`);
+      getAllCategory();
       
-      // coursetData.append("title", title);
-      // coursetData.append("selling_price", selling_price);
-      // coursetData.append("discounted_price", discounted_price);
-      // coursetData.append("duration", duration);
-      // coursetData.append("description", description);
-      // coursetData.append("thumnail_img", thumnail_img);
-      // console.log("This Is working of course Update data",);
-      const res = axios.put(
-        `http://localhost:8000/api/v1/course/${param.id}`,{
-        courseData
-        
-       });
-     
-      if (res?.success) {
-        toast.error(res?.message);
-        toast.success("Product Updated Successfully");
-      } else {
-        toast.success("Product Updated Successfully");
-        // navigate("/dashboard/admin/");
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error("something went wrong");
+    }else {
+      toast.error(data.message);
+      
     }
-  };
+    
+  } catch (error) {
+    
+    console.log(error);
+    
+    toast.error("Something Went Wrong");
+  }
+};
 
   return (
     <>
-     <div className='shadow-xl w-96 mx-auto  rounded-xl text-center mt-5 border border-heading'>
+     <div className='shadow-xl w-3/5 mx-auto  rounded-xl text-center mt-5 border border-heading'>
         <h1>Update Course</h1>
      <form >
                   <div class="border-t border-gray-200">
                     <dl>
-                      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-xl font-medium text-gray-500 mt-5">
-
-                        </dt>
-
+                      <div class="bg-gray-50 px-1 py-1 sm:gap-4 sm:px-6">
                         <Select
-                          required
+                         required
                           bordered={false}
                           placeholder="Select category"
                           size="large"
                           showSearch
-                          className="form-select mb-3 border border-1"
+                          className="form-select mb-3 border border-1 px-10"
                           onChange={(value) => {
                             setCategoryId(value);
                           }}
@@ -133,25 +122,21 @@ const courseData = {
                       </div>
 
 
-                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <div class="bg-white px-4 py-5 sm:gap-4 sm:px-6">
                         <dt class="text-xl font-medium text-gray-500 mt-5">
-                          
                         </dt>
                         <input
                           type="text"
                           value={title}
                           onChange={(e) => setTitle(e.target.value)}
-                          
                           placeholder="Course Name"
                           required
-
                           className="w-full text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
                         />
-                        
                       </div>
-                     
 
-                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+
+                      <div class="bg-white px-4 py-5 sm:gap-4 sm:px-6">
                         <dt class="text-xl font-medium text-gray-500 mt-5">
                          
                         </dt>
@@ -168,7 +153,7 @@ const courseData = {
                       </div>
 
               
-                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <div class="bg-white px-4 py-5 sm:gap-4 sm:px-6">
                         <dt class="text-xl font-medium text-gray-500 mt-5">
                           
                         </dt>
@@ -183,7 +168,7 @@ const courseData = {
                           className="w-full text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
                         />
                       </div>
-                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <div class="bg-white px-4 py-5 sm:gap-4 sm:px-6">
                         <dt class="text-xl font-medium text-gray-500 mt-5">
                           
                         </dt>
@@ -198,7 +183,7 @@ const courseData = {
                           className="w-full text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
                         />
                       </div>
-                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <div class="bg-white px-4 py-5 sm:grid sm:gap-4 sm:px-6">
                         <dt class="text-xl font-medium text-gray-500 mt-5">
                           
                         </dt>
@@ -213,7 +198,7 @@ const courseData = {
                           className="w-full text-lg py-2 border-b border-black focus:outline-none focus:border-indigo-500 bg-white md:mb-5"
                         />
                       </div>
-                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <div class="bg-white px-4 py-5 sm:gap-4 sm:px-6">
                         <dt class="text-xl font-medium text-gray-500 mt-5">
                           
                         </dt>

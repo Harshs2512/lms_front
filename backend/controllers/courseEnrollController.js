@@ -34,25 +34,83 @@ const CourseEnroll = require("../models/courseEnrollModel");
 //   }
 // });
 
-//********************&&&&&&&&&&&&&******************* */
+// Create and export the newEnroll function
 exports.newEnroll = catchAsyncErrors(async (req, res, next) => {
-    const {
-      paymentInfo, 
-      courseData 
-    }= req.body;
+  const { paymentInfo, courseData } = req.body;
+  const userId = req.user._id;
 
-    const order = await CourseEnroll.create({
-      paymentInfo,
-      courseData, 
-      user:req.user._id,
-    });
-    console.warn(order);
-    res.status(200).json({
-      success: true,
-      message: "Enroll course Detail",
-      data: order,
-    });
+  for (const courseId of courseData) {
+    const courseName = courseId.courseName;
+    console.log(courseName);
+    const existingEnrollment = await CourseEnroll.find({
+      user: userId,
+      "courseData.courseName": courseName,
+    }).exec();
+    if (existingEnrollment.length > 0) {
+      return res.status(400).json({
+        success: false,
+        message: "You have already enrolled in this course",
+      });
+    }
+  }
+
+  const order = await CourseEnroll.create({
+    paymentInfo,
+    courseData,
+    user: userId,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: "Enroll course detail",
+    data: order,
+  });
 });
+
+
+//For admin create course
+// exports.newEnroll = catchAsyncErrors(async (req, res, next) => {
+//   try {
+//       const order = await CourseEnroll.find();
+//       console.log(order[0].courseData[0].courseName)
+//       if (order[0].courseData[0].courseName.length > 0) {
+//           let checking = false;
+//           for (let i = 0; i < order.courseData.courseName.length; i++) {
+//               if (
+//                 order.courseData[i]["courseName"].toLowerCase() === req.body.courseName.toLowerCase()) {
+//                   checking = true;
+//                   break;
+//               }
+//           }
+//           if (checking == false) {
+//               const courseName = new CourseEnroll(req.body);
+//               const title_data = await courseName.save();
+//               res
+//                   .status(200)
+//                   .send({ success: true, message: "Successfully Added (" + req.body.courseName + ") EnrollCourse", data: title_data });
+//           } else {
+//               res.status(400).send({
+//                   success: false,
+//                   message: "this course(" + req.body.title + ") is already exists",
+//               });
+//           }
+//       } else {
+//           const order = await CourseEnroll.create(req.body);
+//           res.status(201).json({
+//               success: true,
+//               order,
+//           });
+//           const title_data = await order.courseData.save();
+//           res
+//               .status(400)
+//               .send({ success: true, message: "enroll Course Data", data: title_data });
+//       }
+
+//       //category find end code
+//   } catch (error) {
+//       res.status(400).send({ success: false, msg: error.message });
+//   }
+// });
 
 //get single enroll course
 exports.showSingleOrder = catchAsyncErrors(async (req, res, next) => {

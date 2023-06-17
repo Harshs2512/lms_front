@@ -28,6 +28,7 @@ import Lecture from "../admin/admin/lecture/Lecture"
 import AddLecture from "../admin/admin/lecture/AddLecture"
 import ViewLecture from "../admin/admin/lecture/ViewLecture"
 import VideoModel from './Course/VideoModel/MycourseVideo';
+import MycourseVideo from './Course/VideoModel/MycourseVideo';
 const UserDashBoard = () => {
 
 
@@ -85,6 +86,7 @@ const UserDashBoard = () => {
                 <Route path="Purchase" element={<Purchase />} />
                 <Route path="category/:id" element={<PurchaseByCategory />} />
                 <Route path="Mycourse/:id" element={<MyviewCourse />} />
+                <Route path="Mycourse/:id/MycourseVideo" element={<MycourseVideo />} />
                 {/* <Route path='Mycourse/:id/VideoModel' element={<VideoModel />} /> */}
                 {/* <Route path="/Purchase/:id" element={<Curriculum />} /> */}
               </Routes>

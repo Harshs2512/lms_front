@@ -26,11 +26,11 @@ export default function Purchase() {
   }, []);
 
   return (
-      <div className="bg-white justify-center items-center py-2 ml-60">
+      <div className="bg-white justify-center items-center py-2  md:ml-60">
         <div className="w-full h-10 bg-gray-200">
           <h1 className="text-2xl text-center font-bold">All Course</h1>
         </div>
-        <div className="md:px-10 md:grid md:grid-cols-2 lg:grid-cols-3 space-y-4 md:space-y-0 py-8 md:gap-4">
+        <div className="md:px-10 grid px-10 lg:grid-cols-3 space-y-4 md:space-y-0 py-8 md:gap-4">
           {courses?.map((p) => (
             <div key={p._id}>
               <div className=" w-72 h-96 mb-5 bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">

@@ -13,7 +13,7 @@ export default function ShowLesson() {
   };
   return (
     <>
-      <div className='p-2 border border-orange'>
+      <div className='p-1 border border-orange'>
         <Accordion open={open === 1} icon={<Icon id={1} open={open} className='border' />}>
           <AccordionHeader onClick={() => handleOpen(1)}>
            <h1>Lesson 1</h1>

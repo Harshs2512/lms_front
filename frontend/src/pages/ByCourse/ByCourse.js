@@ -53,7 +53,7 @@ const ByCourse = () => {
         }
         catch (error) {
             console.log(error);
-            toast.error("Something went wrong");
+            toast.error("You have already purchesed this course");
         }
         
     };
@@ -71,17 +71,17 @@ const ByCourse = () => {
         <>
         <ToastContainer/>
             <div className="h-[100vh] w-full  overflow-auto scrollbar-hide p-4 bg-slate-100 border border-red-600">
-                <div className="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
+                <div className="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto ">
                     <div className="flex justify-start item-start space-y-2 flex-col ">
                         <h1 className="text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9  text-gray-800">Purchase Course</h1>
                     </div>
                     <div className="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch  w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
-                        <div className="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
-                            <div className="flex flex-col justify-start items-start bg-gray-50 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
-                                <p className="text-lg md:text-xl font-semibold leading-6 xl:leading-5 text-gray-800">Course Cart</p>
-                                <table class="w-full text-left text-sm font-light border border-black rounded-lg  mt-4">
-                                    <div className='grid grid-cols-2 lg:grid-cols-2 sm:grid-cols-2 md:grid-cols-2 h-28  justify-between items-center  '>
-                                        <div className='flex items-center'>
+                        <div className="grid grid-cols-1      justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
+                            <div className="flex flex-col   justify-start items-start  border border-black bg-gray-50 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
+                                <p className="text-lg md:text-xl font-semibold leading-6 xl:leading-5 text-gray-800" >Course Cart</p>
+                                <table class="w-full p-2 text-left text-sm font-light rounded-lg  mt-4">
+                                    <div className='grid grid-cols-1     items-center  '>
+                                        <div className='flex   items-center'>
                                             <div class='bg-gray-600'>
                                                 <img src="https://wallpapercave.com/wp/wp7420966.jpg" alt="" className=' object-cover h-24' /> </div>
                                             <div className=' w-full px-4 '>
@@ -93,22 +93,22 @@ const ByCourse = () => {
                                                     <UilRupeeSign UilTable className='w-4 h-4 mt-1' />
                                                     <div class="flex gap-2">
                                                         <span class=" text-red-500 line-through lg:text-sm font-bold "> {result && result.discounted_price}</span>
-                                                        <span class="text-gray-600 font-bold   flex ml-2"> <UilRupeeSign UilTable className='w-4 h-4 mt-1' />{result && result.selling_price}</span>
+                                                        <span class="text-gray-600 font-bold   flex ml-2" > <UilRupeeSign UilTable className='w-4 h-4 mt-1' />{result && result.selling_price}</span>
                                                     </div>
                                                 </div>
                                             </div>
 
                                         </div>
                                         <div className='text-right '>
-                                            <div>
-                                                <button onClick={byCourse} className='w-28 rounded-lg mt-1 mr-5 hover:bg-slate-400 text-sm font-serif hover:text-white duration-150 transition-shadow    border-2 border-blue-800 h-8'>Buy now</button>
+                                            <div className="flex justify-end">
+                                                <button onClick={byCourse} className='w-28 rounded-lg mt-2 bg-[#040239] text-sm font-serif hover:bg-[#040239]/80 duration-150 transition-shadow  text-white  h-8 m-2'>Buy now</button>
                                             </div>
                                         </div>
                                     </div>
                                 </table>
                             </div>
-                            <div className="flex justify-center md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
-                                <div className="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-50 space-y-6   ">
+                            <div className="flex  border border-black p-2  justify-center md:flex-row flex-col items-stretch w-full space-y-0 md:space-y-0 md:space-x-6 xl:space-x-8">
+                                <div className="flex flex-col px-4  md:p-0 xl:p-8 w-full bg-gray-50 space-y-6   ">
                                     <h3 className="text-xl font-semibold leading-5 text-gray-800">Summary</h3>
                                     <div className="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
                                         <div className="flex justify-between  w-full">
@@ -134,8 +134,8 @@ const ByCourse = () => {
                         <div>
 
                             {/* <!-- Snippet --> */}
-                            <div class=" bg-gray-100 text-gray-600 -mt-20  p-4">
-                                <div class="h-full w-[400px]">
+                            <div class=" bg-gray-100 text-gray-600 md:-mt-20 mt-0  p-4">
+                                <div class="h-full w-full md:w-[400px] ">
                                     {/* <!-- Pay component --> */}
                                     <div>
                                         {/* <!-- Card background --> */}
@@ -147,16 +147,10 @@ const ByCourse = () => {
                                             <div class="bg-white px-8 pb-6 rounded-b shadow-lg">
 
                                                 {/* <!-- Card header --> */}
-                                                <div class="text-center mb-6">
-                                                    <div class="mb-2">
-                                                        <img class="-mt-8 inline-flex rounded-full" src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp" width="64" height="64" alt="User" />
-                                                    </div>
-                                                    <h1 class="text-xl leading-snug text-gray-800 font-semibold mb-2">Front-End Learning 🔥</h1>
-
-                                                </div>
+                                       
                                                 {/* 
                     <!-- Toggle --> */}
-                                                <div class="flex justify-center mb-6">
+                                                <div class="flex justify-center mb-6 ">
                                                     <div class="relative flex w-full p-1 bg-gray-50 rounded">
                                                         <span class="absolute inset-0 m-1 pointer-events-none" aria-hidden="true">
                                                             <span class="absolute inset-0 w-1/2 bg-white rounded border border-gray-200 shadow-sm transform transition duration-150 ease-in-out"  ></span>

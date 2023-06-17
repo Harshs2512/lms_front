@@ -29,9 +29,9 @@ export default function Lesson() {
 
   return (
     <>
-      <div className='mt-12 ml-5 w-[100%] h-[100vh]  overflow-auto scrollbar-hide  '>
+      <div className='mt-12 ml-5 w-full h-[100vh]  overflow-auto scrollbar-hide  '>
         {/* <Navbar/> */}
-        <div className='grid grid-cols-4 justify-items-center gap-20 p-5'>
+        <div className='grid md:grid-cols-3 grid-cols-1  justify-items-center gap-20 p-5'>
           <div className='shadow-xl rounded-2xl w-52 h-52 grid place-content-center'>
             <div className=' h-36 w-36 grid place-content-center text-darkblue '>
               <UilBooks size='100' />

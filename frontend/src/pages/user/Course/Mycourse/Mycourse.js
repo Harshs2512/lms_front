@@ -42,25 +42,26 @@ export default function Mycourse() {
   console.log(order)
 
   return (
-    <div className='md:ml-[12.5rem] mt-16 md:w-[90%] w-[38%]'>
-      <div class="bg-red-100 py-5 px-96 md:w-full">
+    <div className='md:ml-[12.5rem] ml-0 mt-16 md:w-[66.2rem] w-full'>
+      <div class="bg-red-100 py-5 md:px-96 md:w-full w-96">
         <div className='flex'>
           <UilNotebooks className='h-14 w-10 ml-12' />
           <h1 class="text-2xl text-gray-800 p-2 ml-1">My Course</h1>
         </div>
       </div>
-      <div class="flex flex-col md:mx-16 py-5 rounded-lg">
-        <div class="overflow-x-auto">
-          <div class="inline-block md:w-full py-2 sm:px-6 lg:px-8 items-center">
+      <div class="flex md:mx-10 ml-2 py-10 md:ml-16 rounded-lg">
+        <div class="">
+          <div class="block md:w-full py-2 sm:px-6 lg:px-8 items-center">
             {order === 1 && (
               <>
                 {your_Orders && your_Orders.map((c, i) => (
-                  <div key={c._id} class="overflow-hidden rounded-xl border-2 p-5 border-red-500 mb-5">
+                  <div key={c._id} class="rounded-xl border-2 p-5 border-red-500 mb-5">
                     <div class=" text-left text-sm font-light  ">
-                      <div className='grid lg:grid-cols-2 justify-between items-center  '>
-                        <div className='flex items-center'>
+                      <div className='grid lg:grid-cols-2 grid-cols-1 justify-between items-center  '>
+                        <div className='lg:flex block  items-center'>
                           <div class='bg-gray-600'>
-                            <img src="https://wallpapercave.com/wp/wp7420966.jpg" alt="" className=' object-cover w-80' /> </div>
+                            <img src="https://wallpapercave.com/wp/wp7420966.jpg" alt="" className=' object-cover w-80' /> 
+                            </div>
                           <div className=' w-full px-10 space-y-2'>
 
                             {c?.courseData?.map((p, i) => (
@@ -74,9 +75,9 @@ export default function Mycourse() {
                             <div className='flex gap-1'><UilPlay className='w-4 h-4 mt-1' />  <h1 className='text-sm font-semibold '>Buy on : {c?.createdAt.substring(0, 10)}</h1></div>
                           </div>
                         </div>
-                        <div className='text-right '>
+                        <div className='text-center lg:text-right mt-10 w-full'>
                           {c?.courseData?.map((p) => (
-                            <button key={p._id} className='w-28 rounded-lg mr-5 hover:bg-slate-400 text-sm font-semibold hover:text-white duration-150 transition-shadow    border-2 border-red-500 h-8'><Link to={"/dashboard/Mycourse/" + (p?.courseID)}>View now</Link></button>))}
+                            <button key={p._id} className='w-full lg:w-28 rounded-lg mr-5 hover:bg-slate-400 text-sm font-semibold hover:text-white duration-150 transition-shadow    border-2 border-red-500 h-8'><Link to={"/dashboard/Mycourse/" + (p?.courseID)}>View now</Link></button>))}
                         </div>
                       </div>
                     </div>
@@ -84,7 +85,7 @@ export default function Mycourse() {
                 ))}</>
             )}
             {order === 0 && (<>
-              <div className='flex justify-center'>
+              <div className='flex justify-center md:ml-80 ml-20'>
                 <div className='block'>
                   <div className='w-60 h-60'>
                     <img src={Empty} alt="safasd" />

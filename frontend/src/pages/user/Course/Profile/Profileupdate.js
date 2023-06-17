@@ -24,11 +24,11 @@ const Profileupdate = () => {
                 toast.success(res.data && res.data.message);
                 navigate("/login");
             } else {
-                toast.error(res.data.message);
+                toast.error("jijjj");
             }
         } catch (error) {
             console.log(error);
-            toast.error("Something went wrong");
+            toast.error("Som went wrong");
         }
     };
     return (
@@ -100,7 +100,7 @@ const Profileupdate = () => {
                                         <div class="text-sm text-left font-bold text-gray-700 tracking-wide pt-11">
                                             Password
                                         </div>
-                                        \
+                                        
                                     </div>
                                     <div className="text-center mt-10">
                                         <button

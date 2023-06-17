@@ -33,7 +33,7 @@ export default function Course() {
         <>
             <div className='mt-10 w-[100%] h-[100vh]  overflow-auto scrollbar-hide  '>
                 {/* <Navbar/> */}
-                <div className='grid grid-cols-4 justify-items-center gap-20 p-5'>
+                <div className='grid grid-cols-1  md:grid-cols-3 justify-items-center gap-20 p-5'>
                     <div className='shadow-xl rounded-2xl w-52 h-52 grid place-content-center'>
                         <div className=' h-36 w-36 grid place-content-center text-darkblue '>
                             <UilBookMedical size='100' />

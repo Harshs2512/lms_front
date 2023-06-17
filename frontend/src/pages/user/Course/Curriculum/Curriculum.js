@@ -75,7 +75,9 @@ export default function Curriculum() {
           class="bg-cover w-[100%] bg-center backdrop-blur-sm  text-white py-20 px-10 mt-8"
           style={{
             "background-image":
-              "url(https://wallpapercave.com/wp/wp3105538.jpg)",
+              "url(https://c4.wallpaperflare.com/wallpaper/632/34/549/technology-monitor-alpha-coders-binary-wallpaper-preview.jpg)",
+            "background-repeat": "no-repeat;",
+            "background-size": "10% 10%;"
           }}
         >
           <div class="md:w-1/2 -mt-6 text-left  py-5 lg:ml-9 ml-0 ">
@@ -137,36 +139,36 @@ export default function Curriculum() {
                     Currinculam
                   </h1>
                   {lessons && lessons.map((l) => (<>
-                  <div className="py-1">
-                    <div
-                      className="m-2 border-2 hover  :border-black flex px-5 text-left"
-                      onClick={() => handleOpen(1)}
-                    >
-                      <Accordion open={open === 1}>
-                        <AccordionHeader className="text-black font-bold">
-                        {l.title}
-                          <button className="">
-                            <h1 className="text-black text-3xl">+</h1>
-                          </button>
-                        </AccordionHeader>
-                        <AccordionBody className="px-4">
-                          <Link to="https://youtu.be/E7HjaoES64s">
-                            <div className=" grid grid-cols-2  border-2 border-red-700 w-full p-2">
-                              <h1>{l.title}</h1>
-                              <h1 className="float-right">
-                                <button>View</button> 02.56
-                              </h1>
-                            </div>
-                          </Link>
-                        </AccordionBody>
-                      </Accordion>
-                    </div>
-                  </div></>))}
+                    <div className="py-1">
+                      <div
+                        className="m-2 border-2 hover  :border-black flex px-5 text-left"
+                        onClick={() => handleOpen(1)}
+                      >
+                        <Accordion open={open === 1}>
+                          <AccordionHeader className="text-black font-bold">
+                            {l.title}
+                            <button className="">
+                              <h1 className="text-black text-3xl">+</h1>
+                            </button>
+                          </AccordionHeader>
+                          <AccordionBody className="px-4">
+                            <Link to="https://youtu.be/E7HjaoES64s">
+                              <div className=" grid grid-cols-2  border-2 border-red-700 w-full p-2">
+                                <h1>{l.title}</h1>
+                                <h1 className="float-right">
+                                  <button>View</button> 02.56
+                                </h1>
+                              </div>
+                            </Link>
+                          </AccordionBody>
+                        </Accordion>
+                      </div>
+                    </div></>))}
                 </div>
               </div>
             </div>
 
-            <div className="z-50 sm:-mt-80 flex justify-center">
+            <div className="z-10 sm:-mt-72 flex justify-center">
               <div className="block lg:fixed ">
                 <div
                   id="whoobe-3fery"
@@ -184,14 +186,14 @@ export default function Curriculum() {
                     class="w-full p-4  justify-start flex flex-col"
                   > {firstlesson && firstlesson.map((l) => (<>
                     <h4 key={l._id} class="border-b-2 text-3xl" id="whoobe-3mr7n">
-                        <div>
-                          {l && l.title}
-                        </div>
+                      <div>
+                        {l && l.title}
+                      </div>
                     </h4>
                     <p class="my-4 md:my-1 px-10 " id="whoobe-950fw">
-                    {l.discreption}
+                      {l.discreption}
                     </p></>
-                    ))}
+                  ))}
                     <button
                       value="button"
                       class="my-4 px-4 py-2 md:my-1 md:px-1 text-white hover:bg-blue-700 bg-blue-500"
