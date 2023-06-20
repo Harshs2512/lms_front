@@ -2,6 +2,8 @@ import React from "react";
 import PhoneForwardedIcon from "@mui/icons-material/PhoneForwarded";
 import TeacherCard from "./TeacherCard"
 import Typewriter from "typewriter-effect";
+import { Link } from "react-router-dom";
+import Contact_us from "../../components/ContactUs";
 
 
 export default function Lorem() {
@@ -45,16 +47,19 @@ export default function Lorem() {
                 <PhoneForwardedIcon />
               </span>
             </button> */}
-            <button
+             <Link to="Contact_us">
+              <button
               className="relative btn4 mt-12 px-10 py-5 border border-black uppercase text-blue-500 font-semibold tracking-wider leading-none overflow-hidden"
               type="button"
             >
               <span className="absolute inset-x-0 h-3 bottom-0 bg-blue-500"></span>
               For Know about it...
+             
               <span className="text-#de5e18">
                 <PhoneForwardedIcon />
               </span>
             </button>
+            </Link>
             <div>
 
             </div>
@@ -156,7 +161,7 @@ export default function Lorem() {
               </span>
             </button> */}
               <div className="flex justify-center">
-                <button
+              <Link to="Contact_us"> <button
                   className=" relative btn4   mt-12 px-10 py-5 border border-black uppercase text-#de5e18 font-semibold tracking-wider leading-none overflow-hidden"
                   type="button"
                 >
@@ -166,6 +171,7 @@ export default function Lorem() {
                     <PhoneForwardedIcon className="animate-bounce" />
                   </span>
                 </button>
+                </Link>
               </div>
             </div>
           </div>

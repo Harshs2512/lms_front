@@ -150,7 +150,7 @@ exports.getCourseDetails = catchAsyncErrors(async (req, res, next) => {
 
 //show all course by category id
 exports.getAllCoursesByCat_id = catchAsyncErrors(async (req, res) => {
-    const result = await Course.find({ categoryId: req.params.id });
+    const result = await Course.find({ categoryId: req.params.id }).populate('categoryId', 'catName');
     res.status(200).json({
         success: true,
         result
@@ -285,7 +285,7 @@ exports.deleteCategory = catchAsyncErrors(async (req, res) => {
 
 // Show all Lessons
 exports.getAllLesson = catchAsyncErrors(async (req, res) => {
-    const lesson = await Lesson.find().populate('courseId','title');
+    const lesson = await Lesson.find().populate('courseId', 'title');
     res.status(200).json({
         success: true,
         lesson,

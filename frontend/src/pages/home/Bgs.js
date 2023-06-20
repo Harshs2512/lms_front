@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Bgs() 
 {
     return(
@@ -18,9 +20,9 @@ function Bgs()
 
 
             </p>
-            <button className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 w-40 px-4 border-4 border-white hover:border-transparent">
+            <Link to="login"> <button className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 w-40 px-4 border-4 border-white hover:border-transparent">
   Button
-</button>
+</button> </Link>
             
           </div>
        

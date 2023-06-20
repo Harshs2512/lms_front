@@ -105,10 +105,10 @@ const SignUp = () => {
                     <div className="text-right pt-3">
                       Don't have an account ?
                       <Link
-                        to="/Signup"
+                        to="/Login"
                         className="hover:underline text-gray-900 hover:text-blue-600"
                       >
-                        Signup
+                        Login
                       </Link>
                     </div>
                   </div>

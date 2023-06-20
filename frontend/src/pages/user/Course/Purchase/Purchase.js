@@ -36,9 +36,8 @@ export default function Purchase() {
               <div className=" w-72 h-96 mb-5 bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
                 <div className="relative">
                   <img className="w-full rounded-xl" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29kaW5nfGVufDB8fDB8fHww&w=1000&q=80" alt="Colors" />
-                  <p className="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">FREE</p>
+                  {/* <p className="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">FREE</p> */}
                 </div>
-
                 <h1 className="mt-4 text-gray-800 text-[15px] font-bold cursor-pointer">{p.title}</h1>
                 <div className="my-1">
                   <div className="flex space-x-2 text-[12px] items-center">
@@ -55,7 +54,7 @@ export default function Purchase() {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                       </svg>
                     </span>
-                    <p>{p.category}</p>
+                    <p>{p.categoryId && p.categoryId.catName}</p>
                   </div>
                   <div className="flex item-center mt-2">
                     <svg className="w-5 h-5 fill-current text-gray-700" viewBox="0 0 24 24">
@@ -74,8 +73,8 @@ export default function Purchase() {
                       <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
                     </svg>
                   </div>
-                  <Link to={`${p._id}`}>
-                    <button className=" text-[18px] mt-2 h-8 w-full text-white bg-indigo-600  items-center rounded-xl shadow-lg">View Lession</button></Link>
+                  <Link __blank to={`${p._id}`}>
+                    <button className=" text-[18px] mt-2 h-8 w-full text-white bg-indigo-600  items-center rounded-xl shadow-lg">View</button></Link>
                 </div>
               </div>
 

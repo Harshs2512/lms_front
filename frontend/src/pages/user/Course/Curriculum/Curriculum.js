@@ -26,10 +26,9 @@ export default function Curriculum() {
 
 
   const courseData1 = async () => {
-    // console.log(auth.token)
     try {
       const { data } = await axios.get(`http://localhost:8000/api/v1/course/${param.id}`);
-      setCourse(data.result);
+      setCourse(data.result); 
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
@@ -37,7 +36,6 @@ export default function Curriculum() {
   };
 
   const lessonData = async () => {
-    // console.log(auth.token)
     try {
       const { data } = await axios.get(`http://localhost:8000/api/v1/lesson/${param.id}`);
       setLesssons(data.lessons);
@@ -48,12 +46,9 @@ export default function Curriculum() {
   };
 
   const firstLesson = async () => {
-    // console.log(auth.token)
-    console.log(param)
     try {
       const { data } = await axios.get(`http://localhost:8000/api/v1/firstLesson/${param.id}`);
       setFirstlesson(data.firstlesson);
-      console.log(data.firstlesson);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
@@ -95,7 +90,7 @@ export default function Curriculum() {
               <ul className=" list-item">
                 <li className="mt-1 text-sm">Cybrom</li>
                 <li className="mt-1 text-sm"> Language - English</li>
-                <li className="mt-1 text-sm"> Created on {result && result.createdAt}.substring(0, 10)</li>
+                <li className="mt-1 text-sm"> Created on {result && result.createdAt.substring(0,10)}</li>
                 <li className=" mt-1 text-sm">
                   {result && result.category}
                 </li>

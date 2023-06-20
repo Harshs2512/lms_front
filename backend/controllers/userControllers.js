@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken")
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
+const Contact = require("../models/contactModel")
 
 
 
@@ -309,3 +310,44 @@ exports.checkUser = async (req, res, next) => {
     }
     next();
 };
+
+
+// Message from contact
+exports.contactUs = catchAsyncErrors(async (req, res, next) => {
+    const {email, message } = req.body;
+
+    const user = await Contact.create({
+        email,
+        message
+    });
+    res.status(200).json({
+        success: true,
+        message: "Message send successfully"
+    });
+});
+
+// Message from contact
+exports.allMessage = catchAsyncErrors(async (req, res, next) => {
+    const message = await Contact.find();
+    res.status(200).json({
+        success: true,
+        message: "Message send successfully",
+        message
+    });
+});
+
+
+exports.deleteMessage = catchAsyncErrors(async (req, res, next) => {
+    const user = await Contact.findById(req.params.id);
+
+    if (!user) {
+        return next(
+            new ErrorHander(`User does not exist with Id: ${req.params.id}`, 400)
+        );
+    }
+    await user.deleteOne();
+    res.status(200).json({
+        success: true,
+        message: "User Deleted Successfully",
+    });
+});

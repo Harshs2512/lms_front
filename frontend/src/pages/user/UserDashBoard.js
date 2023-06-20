@@ -24,11 +24,13 @@ import Lesson from "../admin/admin/lesson/Lesson"
 import AddLesson from "../admin/admin/lesson/AddLesson"
 import ShowLesson from "../admin/admin/lesson/ShowLesson"
 import ViewLesson from "../admin/admin/lesson/ViewLesson"
-import Lecture from "../admin/admin/lecture/Lecture"
-import AddLecture from "../admin/admin/lecture/AddLecture"
-import ViewLecture from "../admin/admin/lecture/ViewLecture"
-import VideoModel from './Course/VideoModel/MycourseVideo';
 import MycourseVideo from './Course/VideoModel/MycourseVideo';
+import User from '../admin/admin/Users/Admin_user';
+import Adduser from '../admin/admin/Users/AddUser';
+import Viewuser from '../admin/admin/Users/Viewuser';
+import ViewEnrolstud from '../admin/admin/Users/ViewEnrolStud'
+import ViewMessage from '../admin/admin/Users/ViewMessage'
+
 const UserDashBoard = () => {
 
 
@@ -64,9 +66,11 @@ const UserDashBoard = () => {
                       <Route path='/lesson/ViewLesson' element={<ViewLesson />}></Route>
                       <Route path='/lesson/ShowLesson' element={<ShowLesson />}></Route>
                     </Route>
-                    <Route path='/lecture' element={<Lecture />}>
-                      <Route path='/lecture/AddLecture' element={<AddLecture />}></Route>
-                      <Route path='/lecture/ViewLecture' element={<ViewLecture />}></Route>
+                    <Route path='/user' element={<User />}>
+                      <Route path='/user/Adduser' element={<Adduser />}></Route>
+                      <Route path='/user/Viewuser' element={<Viewuser />}></Route>
+                      <Route path='/user/ViewEnrolstud' element={<ViewEnrolstud />}></Route>
+                      <Route path='/user/ViewMessage' element={<ViewMessage />}></Route>
                     </Route>
                   </Routes>
                 </div>

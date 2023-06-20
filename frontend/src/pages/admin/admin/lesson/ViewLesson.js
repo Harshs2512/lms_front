@@ -126,7 +126,7 @@ const ViewLesson = () => {
                           onClick={() => {
                             handleDelete(l._id);
                           }}><UilTrashAlt /></button>
-                        <button className='bg-gray-900 text-white rounded-md text-[12px] px-1'><Link to='/dashboard/lesson/showlesson'><UilEye /></Link></button>
+                        <button className='bg-gray-900 text-white rounded-md text-[12px] px-1'><Link to={l.videos}><UilEye /></Link></button>
                       </td>
                     </tr>
                   </>

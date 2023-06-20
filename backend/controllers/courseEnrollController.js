@@ -117,7 +117,6 @@ exports.showSingleOrder = catchAsyncErrors(async (req, res, next) => {
     const order = await CourseEnroll.findById(req.params.id).populate(
       "user",
       "name email"
-    
     );
     if (!order) {
       return next(new ErrorHander("order not found this id", 404));
@@ -131,7 +130,7 @@ exports.showSingleOrder = catchAsyncErrors(async (req, res, next) => {
 
 //get logged in studend all orders
 exports.myOrders = catchAsyncErrors(async (req, res, next) => {
-    const orders = await CourseEnroll.find({user:req.user._id});
+    const orders = await CourseEnroll.find({user:req.user._id}).populate('user', 'name');
     res.status(200).send({
       success: true,
       message: "your all orders",
@@ -141,7 +140,7 @@ exports.myOrders = catchAsyncErrors(async (req, res, next) => {
 
 //get  all orders for   -----Admin
 exports.getAllOrders = catchAsyncErrors(async (req, res) => {
-  const orders = await CourseEnroll.find();
+  const orders = await CourseEnroll.find().populate('user', 'name email');
   let totalAmount = 0;
 
   orders.forEach((order)=>{

@@ -12,8 +12,10 @@ const {
     getSingleUser,
     updateUserRole,
      deleteUser,
-    checkUser
-
+    checkUser,
+    contactUs,
+    allMessage,
+    deleteMessage
 
 } = require("../controllers/userControllers");
 
@@ -33,6 +35,12 @@ router.route("/password/forgot").post(forgotPassword);
 router.route("/password/reset/:token").put(resetPassword);
 
 router.route("/logout").get(logout);
+
+router.route("/contactus").post(contactUs);
+
+router.route("/allMessage").get(allMessage);
+
+router.route("/deleteMessage/:id").delete(deleteMessage);
 
 router.route("/me").get(isAuthenticatedUser, getUserDetails);
 

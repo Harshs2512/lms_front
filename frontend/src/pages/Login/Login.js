@@ -44,10 +44,9 @@ const Login = () => {
   };
   return (
     <>
-      <div className=" ">
-        <div className="flex justify-center  ">
-          <div className="block md:flex justify-center h-[32rem] w-[60rem] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.8)] md:mt-32 mt-10 bg-white py-5">
-            <div className="mt-6  ">
+        <div className="flex justify-center">
+          <div className="block md:flex justify-center h-[32rem] w-[60rem] shadow-2xl md:mt-20 mt-10 bg-white py-5">
+            <div className="mt-6">
               <h1 className=" text-center text-4xl tracking-widest text-blue-900 font-bold ">
                 Welcome to <span className="text-red-900">Cybrom</span>
               </h1>
@@ -62,7 +61,7 @@ const Login = () => {
             >
               <Outlet />
               <div className="flex justify-center  shadow w-full md:w-96 ">
-                <div className="h-[29rem] bg-white w-96 md:w-80 p-8 md:p-0  ">
+                <div className="h-[28rem] bg-white w-96 md:w-80 p-8 md:p-0  ">
                   <div className="  space-y-2">
                     <div className="flex-col justify-center items-center ">
                       <h2
@@ -129,7 +128,6 @@ const Login = () => {
           </div>
         </div>
         <ToastContainer />
-      </div>
     </>
   );
 };

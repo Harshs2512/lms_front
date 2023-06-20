@@ -95,59 +95,11 @@ const Header = () => {
                   <UilListUl className="block md:hidden text-white" />
                 </button>
               </div>
-             
-              {/* <div className="text-white flex justify-end mr-8">
-              <li className=" block">
-                                <UilUserCircle
-                                  onClick={toggleMenu}
-                                  className="cursor-pointer text-white w-6 h-6 mt-4"
-                                />
-                                <div className="relative" id="userPopup">
-                                  {isOpen && (
-                                    <div className="absolute bg-gradient-to-tr from-blue-100 to-blue-900 p-2 w-64 text-[#0f0333]  top-full -left-52 py-6  mt-4 rounded-md shadow-xl">
-                                      <div class="max-w-xs">
-                                        <div class=" bg-transparent shadow-xl rounded-lg py-3">
-                                          <div class="photo-wrapper p-2">
-                                            <img
-                                              class="w-32 h-32 rounded-full mx-auto"
-                                              src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"
-                                              alt={auth.user.name}
-                                            />
-                                          </div>
-                                          <div class="p-2">
-                                            <h2 class="text-center text-sm text-white font-medium leading-8">
-                                              {auth.user.name}
-                                            </h2>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div className="mt-2 border-b border-black">
-                                        <Link to="dashboard/Profile" className=" gap-2 py-1 flex  hover:bg-gray-200">
-                                          <UilUserCircle /> Profile
-                                        </Link>
-                                        <Link
-                                          to="/dashboard"
-                                          className="gap-2 py-1 flex  hover:bg-gray-200 "
-                                        >
-                                          <UilCreateDashboard />
-                                          Go To Dashboard
-                                        </Link>
-                                        <Link to="/Login" className="gap-2 py-1 flex hover:bg-gray-200" onClick={handleLogout
-                                        }>
-                                          <UilSignOutAlt /> Sign Out
-                                        </Link>
-                                      </div>
-                                    </div>
-                                  )}
-                                </div>
-                              </li>
-              </div> */}
             </div>
             <div className="flex flex-1 items-center  sm:items-stretch justify-start">
               <div className="hidden md:block lg:mt-1 md:mt-1  w-full">
                 {!auth?.user ? (
-                  <div className="flex justify-between w-full ">
-
+                  <div className="flex justify-between w-full">
                     <div>
                       <ul className="flex space-x-4">
                         <li className="flex">
@@ -173,6 +125,23 @@ const Header = () => {
                         >
                           <Link onClick={toggleMenu} to="/all_course">
                             Courses
+                          </Link>
+
+                        </li>
+                        <li
+                          id="home2"
+                          className="text-gray-300 px-3 py-2 font-base hover:text-white"
+                        >
+                          <Link onClick={toggleMenu} to="/contact_us">
+                            Contact Us
+                          </Link>
+                        </li>
+                        <li
+                          id="home2"
+                          className="text-gray-300 px-3 py-2 font-base hover:text-white"
+                        >
+                          <Link onClick={toggleMenu} to="/AboutUs">
+                          About Us
                           </Link>
                         </li>
                       </ul>
@@ -334,7 +303,6 @@ const Header = () => {
                       </>
                     )}
                   </ul>
-
                 )}
               </div>
             </div>
@@ -349,7 +317,7 @@ const Header = () => {
           style={{ left: "-100%" }}
         >
           {!auth?.user ? (
-            <ul className="leading-[50px] text-heading grid gap-y-8  place-content-center text-center">
+            <ul className="leading-[50px] text-heading grid gap-y-8 mt-20 place-content-center text-center">
               <>
                 <li>
                   <img
@@ -363,52 +331,70 @@ const Header = () => {
                   </Link>
                 </li>
                 <li className="text-gray-300  hover:text-white rounded-md px-3 py-2 text-lg hover:border-b-2 border-white  font-medium">
-                  <Link onClick={openmobile} to="/">
-                    About Us
+                  <Link onClick={openmobile} to="/all_course">
+                    Courses
                   </Link>
                 </li>
                 <li className="text-gray-300  hover:text-white rounded-md px-3 py-2 text-lg hover:border-b-2 border-white  font-medium">
-                  <Link onClick={openmobile} to="/">
-                    Destination
+                  <Link onClick={openmobile} to="/contact_us">
+                    Contact Us
                   </Link>
                 </li>
+                <li className="text-gray-300  hover:text-white rounded-md px-3 py-2 text-lg hover:border-b-2 border-white  font-medium">
+                  <Link onClick={openmobile} to="/AboutUs">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/Login" >
+                <button className="bg-blue-500 px-8 tracking-widest py-1 md:py-2 text-lg hover:border-b-2 border-white font-medium rounded-md text-white">
+                        Login
+                      </button>
+                      </Link>
+                      </li>
               </>
             </ul>
           ) : (
             <ul className="block space-y-4 ">
               {auth.user.role === "admin" && (
                 <>
-                      <li className="mt-12 flex justify-center">
-                  <img
-                    src="https://cybrom.com/wp-content/uploads/2023/04/Logo-for-website-1.png"
-                    className="w-24 h-14"
-                  />
-                </li>
+                  <li className="mt-12 flex justify-center">
+                    <img
+                      src="https://cybrom.com/wp-content/uploads/2023/04/Logo-for-website-1.png"
+                      className="w-24 h-14"
+                    />
+                  </li>
                   <li className="text-white   rounded-md px-3 py-2 text-lg   font-medium">
-                    <NavLink onClick={toggleClose} to="/dashboard">
-                    Dashboard
+                    <NavLink onClick={openmobile} to="/dashboard">
+                      Dashboard
                     </NavLink>
                   </li>
                   <li className="text-white   rounded-md px-3 py-2 text-lg   font-medium">
-                    <NavLink onClick={toggleClose} to="category">
-                    Category
-                    </NavLink>
+                    <Link onClick={openmobile} to="dashboard/Category">
+                      Category
+                    </Link>
                   </li>
                   <li className="text-white  rounded-md px-3 py-2 text-lg   font-medium">
-                    <NavLink onClick={toggleClose} to="course">
-                    Course
+                    <NavLink onClick={openmobile} to="dashboard/course">
+                      Course
                     </NavLink>
                   </li>
                   <li className="text-white  
                    rounded-md px-3 py-2 text-lg  font-medium">
-                    <NavLink onClick={toggleClose} to="Lesson">
-                    Lesson
+                    <NavLink onClick={openmobile} to="dashboard/lesson">
+                      Lesson
+                    </NavLink>
+                  </li>
+                  <li className="text-white  
+                   rounded-md px-3 py-2 text-lg  font-medium">
+                    <NavLink onClick={openmobile} to="dashboard/user">
+                      User
                     </NavLink>
                   </li>
                   <li className="">
                     <button
                       className="bg-blue-500 px-8 tracking-widest py-1 md:py-2 text-lg  font-medium rounded-md text-white"
-                      onClick={handleLogout}
+                      onClick={openmobile}
                     >
                       <Link to="/Login">Logout</Link>
                     </button>
@@ -481,9 +467,7 @@ const Header = () => {
                         <AiOutlineRead className="  w-8" size={25} />
                       </li>
                       <span
-                        className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
-                          }`}
-                      >
+                        className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"}`}>
                         <Link
                           to="/dashbord/"
                           onClick={openmobile}
@@ -518,9 +502,6 @@ const Header = () => {
                         </ul>
                       </span>
                     </li>
-
-                  
-
                     <li className="flex gap-x-2 text-white ">
                       <i
                         className={`cursor-pointer  duration-500 ${open && ""}`}
