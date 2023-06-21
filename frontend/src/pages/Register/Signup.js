@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate, useLocation, Outlet } from "react-router-dom";
-import toast from "react-hot-toast";
-import { useAuth } from "../../context/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -65,11 +65,12 @@ const SignUp = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong");
+      toast.error("Alread have an account");
     }
   };
   return (
     <>
+    <ToastContainer />
       <div className=" ">
         <div className="flex justify-center  ">
           <div className="block md:flex  justify-center h-[35rem] w-[60rem] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.8)] md:mt-32 mt-10 bg-white py-5">
